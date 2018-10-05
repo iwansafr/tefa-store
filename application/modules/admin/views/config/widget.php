@@ -56,8 +56,8 @@ if(!empty($active_template))
 			$block_title = str_replace('}','', $block_title);
 
 			ob_start();
-			$this->ecrud->open_collapse($block_title, $block_title,'default');
-			echo '<h3>'.$block_title.'</h3>';
+			$this->ecrud->open_collapse($block_title, str_replace('_',' ',$block_title),'default');
+			echo '<h3>'.str_replace('_',' ',$block_title).'</h3>';
 			echo '<label>content</label>';
 			?>
 			<select class="form-control" name="<?php echo $block_title?>[content]">

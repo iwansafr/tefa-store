@@ -1,0 +1,67 @@
+<div class="col-md-12">
+	{menu_user}
+</div>
+<div class="col-md-12">
+	<div class="col-md-4">
+		<div class="panel panel-default text-center">
+			<h3>contact</h3>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="panel panel-default text-center">
+			<h3>LOGO</h3>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="panel panel-default text-center">
+			<h3>search form</h3>
+		</div>
+	</div>
+</div>
+<div class="col-md-12">
+	{menu_top}
+</div>
+<div class="col-md-12">
+	{slider}
+</div>
+<div class="col-md-12">
+	<div class="col-md-6">
+		{top_offer_1}
+	</div>
+	<div class="col-md-6">
+		{top_offer_2}
+	</div>
+</div>
+<div class="col-md-12">
+	{banner_top}
+</div>
+<div class="col-md-12">
+	{banner_bottom}
+</div>
+<div class="col-md-12">
+	{brands}
+</div>
+<div class="col-md-12">
+	<div class="col-md-3">
+		<br>
+		<div class="panel-group">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					contact
+				</div>
+				<div class="panel-body">
+					<h3>Contact</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3">
+		{menu_bottom_1}
+	</div>
+	<div class="col-md-3">
+		{menu_bottom_2}
+	</div>
+	<div class="col-md-3">
+		{menu_bottom_3}
+	</div>
+</div>
