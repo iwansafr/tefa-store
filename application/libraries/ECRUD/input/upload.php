@@ -14,7 +14,7 @@ if(!empty($field))
 	if(!empty($image))
 	{
 		?>
-		<div class="image">
+		<div class="image" data="<?php echo $field ?>">
 			<a href="#">
 				<img src="<?php echo image_module($this->table, $image) ?>" class="img-responsive image-thumbnail image" style="object-fit: cover;width: 200px;height: 140px;" data-toggle="modal" data-target="#img_<?php echo $field?>">
 			</a>

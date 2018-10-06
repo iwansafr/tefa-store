@@ -8,8 +8,9 @@
 		<?php
 		if(!empty($logo_value['image']))
 		{
+			$link = !empty($logo_value['is_custom']) ? image_module('config',$active_template.'_config/'.@$logo_value['image']) : image_module('config', 'logo/'.@$logo_value['image']);
 			?>
-			<img src="<?php echo image_module('config', 'logo/'.@$logo_value['image']) ?>" height="<?php echo $logo_value['height'] ?>">
+			<img src="<?php echo $link ?>" height="<?php echo $logo_value['height'] ?>">
 			<?php
 		}else{
 			echo '<h1><a href="'.base_url().'">'.$logo_value['title'].'</a></h1>';
