@@ -158,6 +158,11 @@ if(!empty($admin_templates))
 	      ),
 	    )
 	  );
+	  $menu[] = array(
+	  	'title' => 'Expedision',
+	    'icon'  => 'fa-file-text',
+	    'link'  => base_url('admin/expedision_list')
+	  );
 	}
 	$data['menu'] = $menu;
 	$this->load->view('admin/templates/'.$admin_templates.'/sidebar_menu', $data);

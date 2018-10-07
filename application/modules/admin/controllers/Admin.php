@@ -343,5 +343,54 @@ class Admin extends CI_Controller
   {
     $this->load->view('admin/index');
   }
+
+  /*Product*/
+  public function product_category($id = 0)
+  {
+    $data['id'] = $id;
+    $this->load->view('admin/index',$data);
+  }
+
+  public function product_category_edit($id = 0)
+  {
+    $this->load->view('admin/index');
+  }
+
+  public function product_cat_list($id = 0)
+  {
+    $this->load->view('admin/index');
+  }
+
+  public function product_list()
+  {
+    $this->load->view('admin/index');
+  }
+
+  public function product_edit($id = 0)
+  {
+    $data['id'] = $id;
+    $this->load->view('admin/index', $data);
+  }
+  public function product_add_menu($id = 0)
+  {
+    $data['id'] = $id;
+    $this->load->view('admin/index', $data);
+  }
+  public function product_cat_add_menu($id = 0)
+  {
+    $data['id'] = $id;
+    $this->load->view('admin/index', $data);
+  }
+
+  public function expedision_list($id = 0)
+  {
+    $data['id'] = $id;
+    $this->load->view('admin/index',$data);
+  }
+
+  public function expedision_edit($id = 0)
+  {
+    $this->load->view('admin/index');
+  }
 }
 

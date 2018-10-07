@@ -25,11 +25,14 @@
 	{slider}
 </div>
 <div class="col-md-12">
-	<div class="col-md-6">
-		{top_offer_1}
+	<div class="col-md-4">
+		{product_top_offer_1}
 	</div>
-	<div class="col-md-6">
-		{top_offer_2}
+	<div class="col-md-4">
+		{product_top_offer_2}
+	</div>
+	<div class="col-md-4">
+		{product_top_offer_3}
 	</div>
 </div>
 <div class="col-md-12">

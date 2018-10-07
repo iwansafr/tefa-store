@@ -1,22 +1,22 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
+$data_config = get_block_config('slider', $config_template);
+$content     = $this->esg->get_content($data_config['where'], @intval($data_config['limit']));
+?>
 <ul id="demo1">
-	<li>
-		<img src="<?php echo base_url().'templates/super_market/';?>images/11.jpg" alt="" />
-		<!--Slider Description example-->
-		<div class="slide-desc">
-			<h3>Buy Rice Products Are Now On Line With Us</h3>
-		</div>
-	</li>
-	<li>
-		<img src="<?php echo base_url().'templates/super_market/';?>images/22.jpg" alt="" />
-		  <div class="slide-desc">
-			<h3>Whole Spices Products Are Now On Line With Us</h3>
-		</div>
-	</li>
-
-	<li>
-		<img src="<?php echo base_url().'templates/super_market/';?>images/44.jpg" alt="" />
-		<div class="slide-desc">
-			<h3>Whole Spices Products Are Now On Line With Us</h3>
-		</div>
-	</li>
+	<?php
+	if(!empty($content))
+	{
+		foreach ($content as $key => $value)
+		{
+			?>
+			<li>
+				<img src="<?php echo image_module('content', $value['id'].'/'.$value['image'])?>" alt="" />
+				<div class="slide-desc">
+					<h3><?php echo $value['title'] ?></h3>
+				</div>
+			</li>
+			<?php
+		}
+	}
+	?>
 </ul>

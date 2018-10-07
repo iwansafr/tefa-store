@@ -1,3 +1,7 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
+$data_config = get_block_config('product_top_offer_1', $config_template);
+$product     = $this->esg->get_product($data_config['where'], @intval($data_config['limit']));
+?>
 <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
 	<ul id="myTab" class="nav nav-tabs" role="tablist">
 		<li role="presentation" class="active"><a href="#expeditions" id="expeditions-tab" role="tab" data-toggle="tab" aria-controls="expeditions" aria-expanded="true">Advertised offers</a></li>

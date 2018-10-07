@@ -7,10 +7,11 @@ if(!empty($config_active_template))
 	$site_value['image']       = !empty($config_active_template['site_image']) ? $config_active_template['site_image'] : $site_value['image'];
 	$site_value['keyword']     = !empty($config_active_template['site_keyword']) ? $config_active_template['site_keyword'] : $site_value['keyword'];
 	$site_value['description'] = !empty($config_active_template['site_description']) ? $config_active_template['site_description'] : $site_value['description'];
+	$site_value['is_custom']   = !empty($config_active_template['site_image']) ? 1 : 0;
 }
 $mod['name'] = $this->router->fetch_class();
 $mod['task'] = $this->router->fetch_method();
-$image       = image_module('config', 'site/'.@$site_value['image']);
+$image       = !empty($site_value['is_custom']) ? image_module('config', $active_template.'_config/'.@$site_value['image']) :image_module('config', 'site/'.@$site_value['image']);
 
 if($mod['name'] == 'content')
 {

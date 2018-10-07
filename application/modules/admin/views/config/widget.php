@@ -42,6 +42,14 @@ if(!empty($active_template))
 		}
 
 		$this->db->select('id,title');
+		$prodcat = $this->db->get_where('product_cat', 'publish = 1')->result_array();
+		$prodcat[] = array('id'=>0, 'title'=>'Latest');
+		foreach ($prodcat as $prodcatkey => &$prodcatvalue)
+		{
+			$prodcatvalue['id'] = 'prodcat_'.$catvalue['id'];
+		}
+
+		$this->db->select('id,title');
 		$menu = $this->db->get_where('menu_position')->result_array();
 		foreach ($menu as $menukey => &$menuvalue)
 		{
@@ -66,6 +74,8 @@ if(!empty($active_template))
 			if(preg_match('~menu_~', $block_title))
 			{
 				$option_block = $menu;
+			}else if(preg_match('~product_~', $block_title)){
+				$option_block = $prodcat;
 			}else{
 				$option_block = $cat;
 			}

@@ -1250,8 +1250,6 @@ class Ecrud extends CI_Model
 												$data_param['name']  = $dir_image;
 												$this->data_model->set_param($this->table, $dir_image, $data_param);
 											}
-										}else{
-
 										}
 									}
 									$i++;

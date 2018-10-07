@@ -84,6 +84,13 @@ function get_block_config($title = '', $data =array())
 		{
 			$block['table'] = 'menu';
 			$block['id'] = str_replace('menu_','',$data[$title]['content']);
+		}else if(preg_match('~prodcat_~', $data[$title]['content']))
+		{
+			$block['table']  = 'product';
+			$block['id']     = str_replace('prodcat_','',$data[$title]['content']);
+			$block['where']  = ($block['id'] != 0) ? "publish = 1 AND cat_ids LIKE '%,{$block['id']},%'" : 'publish = 1';
+			$block['header'] = ($block['id'] == 0) ? 'LATEST' : '';
+			$block['limit']  = $data[$title]['limit'];
 		}else if(preg_match('~cat_~', $data[$title]['content']))
 		{
 			$block['table']  = 'content';
