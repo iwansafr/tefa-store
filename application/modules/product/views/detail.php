@@ -22,12 +22,19 @@ if(!empty($data))
 		$this->db->select('title');
 		$tags = $this->db->get_where('product_tag')->result_array();
 	}
-
 	?>
 	<div class="breadcrumbs">
 		<div class="container">
 			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
 				<li><a href="<?php echo base_url() ?>"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+				<?php
+				if(!empty($categories))
+				{
+					?>
+					<li><a href="<?php echo product_cat_link($categories[0]['slug']) ?>"><?php echo $categories[0]['title'] ?></a></li>
+					<?php
+				}
+				?>
 				<li class="active"><?php echo $data['title'] ?></li>
 			</ol>
 		</div>
@@ -72,7 +79,7 @@ if(!empty($data))
 				</div>
 				<div class="col-md-8 agileinfo_single_right">
 				<h2><?php echo $data['title'] ?></h2>
-					<div class="rating1">
+					<!-- <div class="rating1">
 						<span class="starRating">
 							<input id="rating5" type="radio" name="rating" value="5">
 							<label for="rating5">5</label>
@@ -85,7 +92,7 @@ if(!empty($data))
 							<input id="rating1" type="radio" name="rating" value="1">
 							<label for="rating1">1</label>
 						</span>
-					</div>
+					</div> -->
 					<div class="w3agile_description">
 						<h4>Description :</h4>
 						<p><?php echo $data['description'] ?></p>

@@ -1,38 +1,38 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 $type           = @($_GET['type']);
 $slug           = $this->uri->segment(1);
-$content_config = $this->esg->get_config('content_config');
-$limit          = !empty($content_config['limit_list']) ? $content_config['limit_list'] : 6;
+$product_config = $this->esg->get_config('product_config');
+$limit          = !empty($product_config['limit_list']) ? $product_config['limit_list'] : 6;
 $page           = @intval($_GET['page']);
 
-if($slug != 'content')
+if($slug != 'product')
 {
 	$slug       = $this->uri->segment(2);
-	$cat_id     = $this->data_model->get_one('content_cat', 'id', "WHERE slug = '{$slug}'");
-	$cat_title  = $this->data_model->get_one('content_cat', 'title', "WHERE slug = '{$slug}'");
+	$cat_id     = $this->data_model->get_one('product_cat', 'id', "WHERE slug = '{$slug}'");
+	$cat_title  = $this->data_model->get_one('product_cat', 'title', "WHERE slug = '{$slug}'");
 	$title      = @$slug;
 
 	$this->db->order_by('id','DESC');
-	$data       = $this->db->get_where('content', "cat_ids LIKE  '%,{$cat_id},%' AND publish = 1",$limit)->result_array();
-	$total_rows = $this->db->get_where('content',"cat_ids LIKE  '%,{$cat_id},%' AND publish = 1")->num_rows();
+	$data       = $this->db->get_where('product', "cat_ids LIKE  '%,{$cat_id},%' AND publish = 1",$limit)->result_array();
+	$total_rows = $this->db->get_where('product',"cat_ids LIKE  '%,{$cat_id},%' AND publish = 1")->num_rows();
 }else{
 	$id           = @intval($this->uri->segment(3));
 	$title        = @($this->uri->segment(4));
 }
 if(!empty($id))
 {
-	$url_get = base_url('content/category/'.$id.'/'.$title.'.html');
+	$url_get = base_url('product/category/'.$id.'/'.$title.'.html');
 	$header_title = 'Category of '.$title;
-	$table = 'content';
+	$table = 'product';
 }else if(!empty($cat_title)){
 	// $url_get = base_url('category/'.$slug.'.html?type=grid');
 	$url_get = base_url('category/'.$slug.'.html');
 	$header_title = 'Category of '.$cat_title;
-	$table = 'content';
+	$table = 'product';
 }else{
-	$url_get = base_url('content/category/');
+	$url_get = base_url('product/category/');
 	$header_title = 'All Category';
-	$table = 'content_cat';
+	$table = 'product_cat';
 }
 
 if(!empty($id))
@@ -68,9 +68,9 @@ if($type=='grid')
 	$header_title = $cat_title;
 	include 'grid.html.php';
 }else{
-	if(file_exists(APPPATH.'modules/home/views/'.$active_template.'/'.'content/list.html.php'))
+	if(file_exists(APPPATH.'modules/home/views/'.$active_template.'/'.'product/list.html.php'))
 	{
-		$this->load->view('home/'.$active_template.'/'.'content/list.html.php', $view_data);
+		$this->load->view('home/'.$active_template.'/'.'product/list.html.php', $view_data);
 	}else{
 		include 'list.html.php';
 	}

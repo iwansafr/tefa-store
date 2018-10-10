@@ -45,14 +45,14 @@ foreach ($num as $key => $value)
 												<div class="snipcart-thumb">
 													<a href="<?php echo product_link($vvalue['slug']); ?>"><img title=" " alt=" " src="<?php echo image_module('product', $vvalue['id'].'/'.$vvalue['image'])?>" /></a>
 													<p><?php echo $vvalue['title'] ?></p>
-													<div class="stars">
+													<!-- <div class="stars">
 														<i class="fa fa-star blue-star" aria-hidden="true"></i>
 														<i class="fa fa-star blue-star" aria-hidden="true"></i>
 														<i class="fa fa-star blue-star" aria-hidden="true"></i>
 														<i class="fa fa-star blue-star" aria-hidden="true"></i>
 														<i class="fa fa-star gray-star" aria-hidden="true"></i>
-													</div>
-													<h4><?php echo 'Rp. '.number_format($vvalue['price'], '2',',','.'); ?></h4>
+													</div> -->
+													<h4><?php echo 'Rp. '.number_format($vvalue['price']-($vvalue['price']*@intval($vvalue['discount']))/100,'2',',','.') ?> <span><?php echo 'Rp. '.number_format($vvalue['price'], '2',',','.'); ?></span></h4>
 												</div>
 												<div class="snipcart-details top_brand_home_details">
 													<form action="#" method="post">
@@ -62,7 +62,7 @@ foreach ($num as $key => $value)
 															<input type="hidden" name="business" value=" " />
 															<input type="hidden" name="item_name" value="<?php echo $vvalue['title'] ?>" />
 															<input type="hidden" name="amount" value="<?php echo $vvalue['price'] ?>" />
-															<input type="hidden" name="discount_amount" value="0" />
+															<input type="hidden" name="discount_amount" value="<?php echo $vvalue['discount'] ?>" />
 															<input type="hidden" name="currency_code" value="Rp" />
 															<input type="hidden" name="return" value=" " />
 															<input type="hidden" name="cancel_return" value=" " />
@@ -117,14 +117,14 @@ foreach ($num as $key => $value)
 												<div class="snipcart-thumb">
 													<a href="<?php echo product_link($vvalue['slug']); ?>"><img title=" " alt=" " src="<?php echo image_module('product', $vvalue['id'].'/'.$vvalue['image'])?>" /></a>
 													<p><?php echo $vvalue['title'] ?></p>
-													<div class="stars">
+													<!-- <div class="stars">
 														<i class="fa fa-star blue-star" aria-hidden="true"></i>
 														<i class="fa fa-star blue-star" aria-hidden="true"></i>
 														<i class="fa fa-star blue-star" aria-hidden="true"></i>
 														<i class="fa fa-star blue-star" aria-hidden="true"></i>
 														<i class="fa fa-star gray-star" aria-hidden="true"></i>
-													</div>
-													<h4><?php echo 'Rp. '.number_format($vvalue['price'], '2',',','.'); ?></h4>
+													</div> -->
+													<h4><?php echo 'Rp. '.number_format($vvalue['price']-($vvalue['price']*@intval($vvalue['discount']))/100,'2',',','.') ?> <span><?php echo 'Rp. '.number_format($vvalue['price'], '2',',','.'); ?></span></h4>
 												</div>
 												<div class="snipcart-details top_brand_home_details">
 													<form action="#" method="post">
@@ -134,7 +134,7 @@ foreach ($num as $key => $value)
 															<input type="hidden" name="business" value=" " />
 															<input type="hidden" name="item_name" value="<?php echo $vvalue['title'] ?>" />
 															<input type="hidden" name="amount" value="<?php echo $vvalue['price'] ?>" />
-															<input type="hidden" name="discount_amount" value="0" />
+															<input type="hidden" name="discount_amount" value="<?php echo $vvalue['discount'] ?>" />
 															<input type="hidden" name="currency_code" value="Rp" />
 															<input type="hidden" name="return" value=" " />
 															<input type="hidden" name="cancel_return" value=" " />
@@ -189,14 +189,14 @@ foreach ($num as $key => $value)
 												<div class="snipcart-thumb">
 													<a href="<?php echo product_link($vvalue['slug']); ?>"><img title=" " alt=" " src="<?php echo image_module('product', $vvalue['id'].'/'.$vvalue['image'])?>" /></a>
 													<p><?php echo $vvalue['title'] ?></p>
-													<div class="stars">
+													<!-- <div class="stars">
 														<i class="fa fa-star blue-star" aria-hidden="true"></i>
 														<i class="fa fa-star blue-star" aria-hidden="true"></i>
 														<i class="fa fa-star blue-star" aria-hidden="true"></i>
 														<i class="fa fa-star blue-star" aria-hidden="true"></i>
 														<i class="fa fa-star gray-star" aria-hidden="true"></i>
-													</div>
-													<h4><?php echo 'Rp. '.number_format($vvalue['price'], '2',',','.'); ?></h4>
+													</div> -->
+													<h4><?php echo 'Rp. '.number_format($vvalue['price']-($vvalue['price']*@intval($vvalue['discount']))/100,'2',',','.') ?> <span><?php echo 'Rp. '.number_format($vvalue['price'], '2',',','.'); ?></span></h4>
 												</div>
 												<div class="snipcart-details top_brand_home_details">
 													<form action="#" method="post">
@@ -206,7 +206,7 @@ foreach ($num as $key => $value)
 															<input type="hidden" name="business" value=" " />
 															<input type="hidden" name="item_name" value="<?php echo $vvalue['title'] ?>" />
 															<input type="hidden" name="amount" value="<?php echo $vvalue['price'] ?>" />
-															<input type="hidden" name="discount_amount" value="0" />
+															<input type="hidden" name="discount_amount" value="<?php echo $vvalue['discount'] ?>" />
 															<input type="hidden" name="currency_code" value="Rp" />
 															<input type="hidden" name="return" value=" " />
 															<input type="hidden" name="cancel_return" value=" " />

@@ -48,12 +48,12 @@ class Product extends CI_Controller
   }
   public function category($id = 0, $title = '')
   {
-    $this->product_model->set_meta($id,'Category', 'content_cat');
+    $this->product_model->set_meta($id,'Category', 'product_cat');
     $this->load->view('home/index');
   }
   public function tag($id = 0, $title = '')
   {
-    $this->product_model->set_meta($id,'Tag', 'content_tag');
+    $this->product_model->set_meta($id,'Tag', 'product_tag');
     $this->load->view('home/index');
   }
   public function cat_edit($id = 0)
@@ -65,7 +65,7 @@ class Product extends CI_Controller
     $this->load->view('admin/index');
     // echo 'iwan';
   }
-  public function content_cat()
+  public function product_cat()
   {
     $this->load->view('admin/index');
   }
