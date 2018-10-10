@@ -33,6 +33,7 @@ $route['tag/(:any)']              = 'content/tag/$1';
 $route['cat/(:any)']         = 'product/category/$1';
 $route['product-tag/(:any)'] = 'product/tag/$1';
 $route['product/(:any)']     = 'product/detail/$1';
+$route['p/(:any)']           = 'product/detail/$1';
 
 /*crud*/
 $route['crud/list_edit/(:any)'] = 'crud/list_edit/$1';

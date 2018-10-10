@@ -16,15 +16,18 @@
 			<?php $this->load->view($dir.'menu_top') ?>
 		</div>
 	</div>
-	<?php $this->load->view($dir.'slider') ?>
-	<div class="top-brands">
-		<div class="container">
-		<h2>Top selling offers</h2>
-			<div class="grid_3 grid_5">
-				<?php $this->load->view($dir.'product_top_offers') ?>
+	<?php
+	if($content == 'home/product')
+	{
+		$this->load->view($dir.'slider') ?>
+		<div class="top-brands">
+			<div class="container">
+			<h2>Top selling offers</h2>
+				<div class="grid_3 grid_5">
+					<?php $this->load->view($dir.'product_top_offers')?>
+				</div>
 			</div>
 		</div>
-	</div>
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <?php $this->load->view($dir.'banner_top') ?>
     </div>
@@ -34,6 +37,10 @@
 		<div class="brands">
 			<?php $this->load->view($dir.'brands') ?>
 		</div>
+		<?php
+	}else{
+		$this->load->view($content);
+	}?>
 		<div class="newproducts-w3agile">
 			<div class="container">
 				<?php $this->load->view($dir.'new_offers') ?>

@@ -80,7 +80,7 @@ if(!empty($get_id))
 
 $form->addInput('publish','checkbox');
 
-$form->setRequired(array('title','image','price','qty'));
+$form->setRequired(array('title','price','qty'));
 
 $form->form();
 
