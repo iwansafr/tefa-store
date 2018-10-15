@@ -29,7 +29,7 @@
 			</div>
 		</div>
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <?php $this->load->view($dir.'banner_top') ?>
+      <?php $this->load->view($dir.'product_banner_top') ?>
     </div>
 		<div class="ban-bottom-w3l">
 			<?php $this->load->view($dir.'banner_bottom') ?>
