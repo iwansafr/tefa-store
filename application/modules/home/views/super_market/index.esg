@@ -36,7 +36,7 @@
 	</div>
 </div>
 <div class="col-md-12">
-	{banner_top}
+	{product_banner_top}
 </div>
 <div class="col-md-12">
 	{banner_bottom}

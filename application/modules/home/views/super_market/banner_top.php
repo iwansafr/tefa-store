@@ -1,20 +1,26 @@
-<!-- Indicators -->
-<ol class="carousel-indicators">
-  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-  <li data-target="#myCarousel" data-slide-to="1"></li>
-  <li data-target="#myCarousel" data-slide-to="2"></li>
-</ol>
-<div class="carousel-inner" role="listbox">
-  <div class="item active">
-   <a href="beverages.html"> <img class="first-slide" src="<?php echo base_url().'templates/super_market/';?>images/b1.jpg" alt="First slide"></a>
-
-  </div>
-  <div class="item">
-   <a href="personalcare.html"> <img class="second-slide " src="<?php echo base_url().'templates/super_market/';?>images/b3.jpg" alt="Second slide"></a>
-
-  </div>
-  <div class="item">
-    <a href="household.html"><img class="third-slide " src="<?php echo base_url().'templates/super_market/';?>images/b1.jpg" alt="Third slide"></a>
-
-  </div>
-</div>
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
+$data_config = get_block_config('product_banner_top', $config_template);
+if(!empty($data_config['where']))
+{
+  $product = $this->esg->get_product($data_config['where'], @intval($data_config['limit']));
+  $i = 0;
+  echo '<ol class="carousel-indicators">';
+  foreach ($product as $key => $value)
+  {
+    $active = $i == 0 ? 'class="active"' : '';
+    echo '<li data-target="#myCarousel" data-slide-to="'.$i.'" '.$active.'></li>';
+    $i++;
+  }
+  echo '</ol>';
+  $i = 0;
+  echo '<div class="carousel-inner" role="listbox">';
+  foreach ($product as $key => $value)
+  {
+    $active = $i == 0 ? 'active' : '';
+    echo '<div class="item '.$active.'">';
+    echo '<a href="'.product_link($value['slug']).'"> <img class="first-slide" src="'.image_module('product',$value['id'].'/'.$value['image']).'" alt="'.$value['title'].'"></a>';
+    echo '</div>';
+    $i++;
+  }
+  echo '</div>';
+}

@@ -33,7 +33,6 @@ if(!function_exists('super_market_menu_top'))
 					<?php
 				}
 			}
-
 		}
 	}
 }

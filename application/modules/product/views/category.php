@@ -2,7 +2,7 @@
 $type           = @($_GET['type']);
 $slug           = $this->uri->segment(1);
 $product_config = $this->esg->get_config('product_config');
-$limit          = !empty($product_config['limit_list']) ? $product_config['limit_list'] : 2;
+$limit          = !empty($product_config['limit_list']) ? $product_config['limit_list'] : 12;
 $page           = @intval($_GET['page']);
 $psort          = @$_GET['sort'];
 $x_link         = !empty($psort) ? '?sort='.$psort : '';

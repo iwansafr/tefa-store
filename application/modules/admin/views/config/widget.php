@@ -46,7 +46,7 @@ if(!empty($active_template))
 		$prodcat[] = array('id'=>0, 'title'=>'Latest');
 		foreach ($prodcat as $prodcatkey => &$prodcatvalue)
 		{
-			$prodcatvalue['id'] = 'prodcat_'.$catvalue['id'];
+			$prodcatvalue['id'] = 'prodcat_'.$prodcatvalue['id'];
 		}
 
 		$this->db->select('id,title');

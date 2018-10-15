@@ -37,10 +37,10 @@ $form->addInput('description','textarea');
 $form->addInput('price', 'text');
 $form->setType('price','number');
 $form->setAttribute('price',array('min'=>0));
-$form->addInput('qty', 'text');
-$form->setType('qty','number');
-$form->setLabel('qty','Stock');
-$form->setAttribute('qty',array('min'=>0));
+$form->addInput('stock', 'text');
+$form->setType('stock','number');
+$form->setLabel('stock','Stock');
+$form->setAttribute('stock',array('min'=>0));
 
 $form->addInput('weight', 'text');
 $form->setType('weight','number');
@@ -80,7 +80,7 @@ if(!empty($get_id))
 
 $form->addInput('publish','checkbox');
 
-$form->setRequired(array('title','price','qty'));
+$form->setRequired(array('title','price','stock'));
 
 $form->form();
 
