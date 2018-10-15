@@ -45,6 +45,9 @@
 	{brands}
 </div>
 <div class="col-md-12">
+	{product_new_offers}
+</div>
+<div class="col-md-12">
 	<div class="col-md-3">
 		<br>
 		<div class="panel-group">
