@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-$data = array_chunk($data,4);
+$data   = array_chunk($data,4);
 ?>
 
 	<div class="breadcrumbs">
@@ -17,19 +17,11 @@ $data = array_chunk($data,4);
 				<div class="products-right-grid">
 					<div class="products-right-grids">
 						<div class="sorting">
-							<select id="country" onchange="change_country(this.value)" class="frm-field required sect">
-								<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Default sorting</option>
-								<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by popularity</option>
-								<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by average rating</option>
-								<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by price</option>
-							</select>
-						</div>
-						<div class="sorting-left">
-							<select id="country1" onchange="change_country(this.value)" class="frm-field required sect">
-								<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Item on page 9</option>
-								<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Item on page 18</option>
-								<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Item on page 32</option>
-								<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>All</option>
+							<select id="p_sort" class="frm-field required sect form-control">
+								<option value=""><i class="fa fa-arrow-right" aria-hidden="true"></i>Default sorting</option>
+								<option value="<?php echo product_cat_link($title).'?sort=ph2l' ?>" <?php echo $psort == 'ph2l' ? 'selected' : '' ?>><i class="fa fa-arrow-right" aria-hidden="true"></i>High Price to Low</option>
+								<option value="<?php echo product_cat_link($title).'?sort=pl2h' ?>" <?php echo $psort == 'pl2h' ? 'selected' : '' ?>><i class="fa fa-arrow-right" aria-hidden="true"></i>Low Price to High</option>
+								<option value="<?php echo product_cat_link($title).'?sort=newest' ?>" <?php echo $psort == 'newest' ? 'selected' : '' ?>><i class="fa fa-arrow-right" aria-hidden="true"></i>Newest</option>
 							</select>
 						</div>
 						<div class="clearfix"> </div>
@@ -94,7 +86,7 @@ $data = array_chunk($data,4);
 				}
 				?>
 				<nav class="numbering">
-					<ul class="pagination paging">
+<!-- 					<ul class="pagination paging">
 						<li>
 							<a href="#" aria-label="Previous">
 								<span aria-hidden="true">&laquo;</span>
@@ -110,7 +102,8 @@ $data = array_chunk($data,4);
 							<span aria-hidden="true">&raquo;</span>
 							</a>
 						</li>
-					</ul>
+					</ul> -->
+					<?php echo $page_nation; ?>
 				</nav>
 			</div>
 			<div class="clearfix"> </div>

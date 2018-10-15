@@ -20,11 +20,7 @@
 		</ul>
 	</div>
 	<div class="product_list_header">
-			<form action="#" method="post" class="last">
-				<input type="hidden" name="cmd" value="_cart">
-				<input type="hidden" name="display" value="1">
-				<button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
-			</form>
+		<?php include 'cart.php' ?>
 	</div>
 	<div class="clearfix"> </div>
 </div>

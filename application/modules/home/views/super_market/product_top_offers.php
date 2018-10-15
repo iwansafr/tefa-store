@@ -55,17 +55,9 @@ foreach ($num as $key => $value)
 													<h4><?php echo 'Rp. '.number_format($vvalue['price']-($vvalue['price']*@intval($vvalue['discount']))/100,'2',',','.') ?> <span><?php echo 'Rp. '.number_format($vvalue['price'], '2',',','.'); ?></span></h4>
 												</div>
 												<div class="snipcart-details top_brand_home_details">
-													<form action="#" method="post">
+													<form action="#" method="post" name="add_cart">
 														<fieldset>
-															<input type="hidden" name="cmd" value="_cart" />
-															<input type="hidden" name="add" value="1" />
-															<input type="hidden" name="business" value=" " />
-															<input type="hidden" name="item_name" value="<?php echo $vvalue['title'] ?>" />
-															<input type="hidden" name="amount" value="<?php echo $vvalue['price'] ?>" />
-															<input type="hidden" name="discount_amount" value="<?php echo $vvalue['discount'] ?>" />
-															<input type="hidden" name="currency_code" value="Rp" />
-															<input type="hidden" name="return" value=" " />
-															<input type="hidden" name="cancel_return" value=" " />
+															<input type="hidden" name="id" value="<?php echo $vvalue['id'] ?>">
 															<input type="submit" name="submit" value="Add to cart" class="button" />
 														</fieldset>
 													</form>

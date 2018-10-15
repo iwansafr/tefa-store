@@ -18,6 +18,97 @@ class Product extends CI_Controller
 
   }
 
+  public function total_cart()
+  {
+    $current_data = $this->session->userdata('product_cart');
+    $total = 0;
+    if(!empty($current_data))
+    {
+      foreach ($current_data as $key => $value)
+      {
+        $total += $value['price']*$value['qty'];
+      }
+    }
+    echo $total;
+  }
+
+  public function add_cart()
+  {
+    $data                = array('msg'=>'failed add product to cart','status'=>0);
+    $data['add_qty']     = 0;
+    $data['add_product'] = 0;
+    if(!empty($_POST))
+    {
+      $post = array();
+      foreach ($_POST['data'] as $key => $value)
+      {
+        $post[$value['name']] = $value['value'];
+      }
+      $id = @intval($post['id']);
+      if(!empty($id))
+      {
+        $p = $this->db->query('SELECT id,expedision_ids,title,image,price,stock FROM product WHERE id = ? LIMIT 1', $id)->row_array();
+        $current_data = $this->session->userdata('product_cart');
+        if(array_key_exists($id, (array)$current_data))
+        {
+          $current_data[$id]['qty'] += 1;
+          $data['add_qty'] = 1;
+        }else{
+          $current_data[$id]          = $p;
+          $current_data[$id]['qty']   = 1;
+          $current_data[$id]['image'] = image_module('product',$p['id'].'/'.$p['image']);
+          $data['add_product']        = 1;
+        }
+        $data['p_id']             = $id;
+        $this->session->set_userdata('product_cart',$current_data);
+        $data['data'] = $current_data;
+        $data['msg'] = 'product added to cart successfully';
+        $data['status'] = 1;
+      }
+    }
+    $data = json_encode($data);
+    echo $data;
+  }
+
+  public function ch_qty()
+  {
+    $data = array('status'=>0,'msg'=>'failed change qty');
+    if(!empty($_POST))
+    {
+      $id = @intval($_POST['id']);
+      if(!empty($id))
+      {
+        $current_data = $this->session->userdata('product_cart');
+        if(!empty($current_data))
+        {
+          $qty = @intval($_POST['qty']);
+          $current_data[$id]['qty'] = $qty;
+          $this->session->set_userdata('product_cart',$current_data);
+          $data = array('status'=>1);
+        }
+      }
+    }
+    echo json_encode($data);
+  }
+
+  public function del_cart()
+  {
+    $data = array('status'=>0,'msg'=>'failed change qty');
+    if(!empty($_POST))
+    {
+      $id = @intval($_POST['id']);
+      if(!empty($id))
+      {
+        $current_data = $this->session->userdata('product_cart');
+        unset($current_data[$id]);
+        $this->session->set_userdata('product_cart',$current_data);
+        $data = array('status'=>1);
+      }
+    }
+    $data = json_encode($data);
+    echo $data;
+  }
+
   public function api()
   {
     $array = array(1,2,3,4,5);

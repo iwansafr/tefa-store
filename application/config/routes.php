@@ -34,6 +34,10 @@ $route['cat/(:any)']         = 'product/category/$1';
 $route['product-tag/(:any)'] = 'product/tag/$1';
 $route['product/(:any)']     = 'product/detail/$1';
 $route['p/(:any)']           = 'product/detail/$1';
+$route['p-c/add_cart']       = 'product/add_cart';
+$route['p-c/ch_qty']         = 'product/ch_qty';
+$route['p-c/del_cart']       = 'product/del_cart';
+$route['p-c/total_cart']     = 'product/total_cart';
 
 /*crud*/
 $route['crud/list_edit/(:any)'] = 'crud/list_edit/$1';

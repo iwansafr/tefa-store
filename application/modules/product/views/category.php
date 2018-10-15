@@ -2,8 +2,10 @@
 $type           = @($_GET['type']);
 $slug           = $this->uri->segment(1);
 $product_config = $this->esg->get_config('product_config');
-$limit          = !empty($product_config['limit_list']) ? $product_config['limit_list'] : 6;
+$limit          = !empty($product_config['limit_list']) ? $product_config['limit_list'] : 2;
 $page           = @intval($_GET['page']);
+$psort          = @$_GET['sort'];
+$x_link         = !empty($psort) ? '?sort='.$psort : '';
 
 if($slug != 'product')
 {
@@ -12,8 +14,25 @@ if($slug != 'product')
 	$cat_title  = $this->data_model->get_one('product_cat', 'title', "WHERE slug = '{$slug}'");
 	$title      = @$slug;
 
-	$this->db->order_by('id','DESC');
-	$data       = $this->db->get_where('product', "cat_ids LIKE  '%,{$cat_id},%' AND publish = 1",$limit)->result_array();
+	if(!empty($psort))
+	{
+		switch ($psort)
+		{
+			case 'ph2l':
+				$this->db->order_by('price','DESC');
+				break;
+			case 'pl2h':
+				$this->db->order_by('price','ASC');
+				break;
+			case 'newest':
+				$this->db->order_by('id','DESC');
+				break;
+			default:
+				$this->db->order_by('id','DESC');
+				break;
+		}
+	}
+	$data       = $this->db->get_where('product', "cat_ids LIKE  '%,{$cat_id},%' AND publish = 1",$limit,$page)->result_array();
 	$total_rows = $this->db->get_where('product',"cat_ids LIKE  '%,{$cat_id},%' AND publish = 1")->num_rows();
 }else{
 	$id           = @intval($this->uri->segment(3));
@@ -26,7 +45,7 @@ if(!empty($id))
 	$table = 'product';
 }else if(!empty($cat_title)){
 	// $url_get = base_url('category/'.$slug.'.html?type=grid');
-	$url_get = base_url('category/'.$slug.'.html');
+	$url_get = base_url('cat/'.$slug.'.html'.$x_link);
 	$header_title = 'Category of '.$cat_title;
 	$table = 'product';
 }else{
@@ -43,7 +62,6 @@ if(empty($data) && empty($cat_title))
 {
 	$data = $this->db->get_where($table,'publish = 1',$limit,$page)->result_array();
 }
-
 if(!empty($id))
 {
 	$this->db->like('cat_ids', $id, 'both');
@@ -62,7 +80,6 @@ $view_data['header_title']    = $header_title;
 $view_data['data']            = $data;
 $view_data['page_nation']     = $page_nation;
 $view_data['config_template'] = $config_template;
-
 if($type=='grid')
 {
 	$header_title = $cat_title;

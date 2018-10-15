@@ -81,7 +81,7 @@
 		</div>
 <script src="<?php echo base_url().'templates/super_market/';?>js/bootstrap.min.js"></script>
 <?php
-// $this->session->set_userdata('link_js', base_url().'templates/'.$active_template.'/'.'js/'.'script.js');
+$this->session->set_userdata('link_js', base_url().'templates/'.$active_template.'/'.'js/'.'script.js');
 $this->esg->js();
 ?>
 <script type="text/javascript">
@@ -99,17 +99,18 @@ $this->esg->js();
 
 		});
 </script>
-<script src="<?php echo base_url().'templates/super_market/';?>js/minicart.min.js"></script>
+<!-- <script src="<?php echo base_url().'templates/super_market/';?>js/minicart.min.js"></script> -->
 <script>
 	// Mini Cart
-	paypal.minicart.render({
-		action: '#'
-	});
+	// paypal.minicart.render({
+	// 	action: '#'
+	// });
 
-	if (~window.location.search.indexOf('reset=true')) {
-		paypal.minicart.reset();
-	}
+	// if (~window.location.search.indexOf('reset=true')) {
+	// 	paypal.minicart.reset();
+	// }
 </script>
+<?php $this->load->view($dir.'cart') ?>
 <script src="<?php echo base_url().'templates/super_market/';?>js/skdslider.min.js"></script>
 <link href="<?php echo base_url().'templates/super_market/';?>css/skdslider.css" rel="stylesheet">
 <script type="text/javascript">

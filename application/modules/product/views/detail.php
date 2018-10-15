@@ -2,7 +2,6 @@
 
 $slug = $this->uri->segment(2);
 $data = $this->db->get_where('product', "slug = '{$slug}' AND publish = 1",1)->row_array();
-
 if(!empty($data))
 {
 	$cat_ids = $data['cat_ids'];
@@ -79,41 +78,40 @@ if(!empty($data))
 				</div>
 				<div class="col-md-8 agileinfo_single_right">
 				<h2><?php echo $data['title'] ?></h2>
-					<!-- <div class="rating1">
-						<span class="starRating">
-							<input id="rating5" type="radio" name="rating" value="5">
-							<label for="rating5">5</label>
-							<input id="rating4" type="radio" name="rating" value="4">
-							<label for="rating4">4</label>
-							<input id="rating3" type="radio" name="rating" value="3" checked="">
-							<label for="rating3">3</label>
-							<input id="rating2" type="radio" name="rating" value="2">
-							<label for="rating2">2</label>
-							<input id="rating1" type="radio" name="rating" value="1">
-							<label for="rating1">1</label>
-						</span>
-					</div> -->
 					<div class="w3agile_description">
+						<div class="snipcart-thumb agileinfo_single_right_snipcart">
+							<h4 class="m-sing"><?php echo 'Rp. '.number_format($data['price']-($data['price']*@intval($data['discount']))/100,'2',',','.') ?> <span><?php echo 'Rp. '.number_format($data['price'],'2',',','.') ?></span></h4>
+						</div>
+						<div class="snipcart-thumb agileinfo_single_right_snipcart">
+							<div class="col-md-12" style="padding-left: 0;">
+								<div class="col-md-1" style="padding-left: 0;">
+									<h4 class="m-sing">weight</h4>
+								</div>
+								<div class="col-md-3">
+									<h4 class="m-sing">: <?php echo $data['weight'] ?> gram</h4>
+								</div>
+							</div>
+							<div class="col-md-12" style="padding-left: 0;">
+								<div class="col-md-1" style="padding-left: 0;">
+									<h4 class="m-sing">stock</h4>
+								</div>
+								<div class="col-md-3">
+									<h4 class="m-sing">: <?php echo $data['stock'] ?> pcs</h4>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+						<hr>
 						<h4>Description :</h4>
 						<p><?php echo $data['description'] ?></p>
 					</div>
 					<div class="snipcart-item block">
-						<div class="snipcart-thumb agileinfo_single_right_snipcart">
-							<h4 class="m-sing"><?php echo 'Rp. '.number_format($data['price']-($data['price']*@intval($data['discount']))/100,'2',',','.') ?> <span><?php echo 'Rp. '.number_format($data['price'],'2',',','.') ?></span></h4>
-						</div>
 						<div class="snipcart-details agileinfo_single_right_details">
-							<form action="#" method="post">
+							<form action="#" method="post" name="add_cart">
+							<!-- <form action="<?php echo base_url('p-c/add_cart') ?>" method="post" > -->
 								<fieldset>
-									<input type="hidden" name="cmd" value="_cart">
-									<input type="hidden" name="add" value="1">
-									<input type="hidden" name="business" value=" ">
-									<input type="hidden" name="item_name" value="pulao basmati rice">
-									<input type="hidden" name="amount" value="21.00">
-									<input type="hidden" name="discount_amount" value="1.00">
-									<input type="hidden" name="currency_code" value="USD">
-									<input type="hidden" name="return" value=" ">
-									<input type="hidden" name="cancel_return" value=" ">
-									<input type="submit" name="submit" value="Add to cart" class="button">
+									<input type="hidden" name="id" value="<?php echo $data['id'] ?>">
+									<input type="submit" value="Add to cart" class="button">
 								</fieldset>
 							</form>
 						</div>
