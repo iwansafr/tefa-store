@@ -8,8 +8,11 @@ if(!empty($parent_id))
 {
   $data_parent   = $this->data_model->get_one_data('menu',' WHERE id = '.$parent_id);
   $position_name = $this->data_model->get_one('menu_position','title','WHERE id = '.$data_parent['position_id']);
+}else if(!empty($get_id)){
+  $parent_id     = $this->data_model->get_one('menu','par_id','WHERE id = '.$get_id);
+  $data_parent   = $this->data_model->get_one_data('menu',' WHERE id = '.$parent_id);
+  $position_name = $this->data_model->get_one('menu_position','title','WHERE id = '.$data_parent['position_id']);
 }
-
 if(!empty($position_id))
 {
   $position_menu = $this->data_model->get_one_data('menu_position',' WHERE id = '.$position_id);
@@ -41,7 +44,7 @@ $form->addInput('par_id','dropdown');
 $form->setLabel('par_id', 'Parent');
 if(!empty($get_id))
 {
-  $form->tableOptions('par_id', 'menu','id','title',array('id'=>0));
+  $form->tableOptions('par_id', 'menu','id','title',array('id'=>@intval($data_parent['id'])));
 }else{
   $form->setOptions('par_id', array('none'));
   if(!empty($data_parent))
@@ -64,9 +67,13 @@ $form->addInput('title','text');
 
 $form->addInput('link','text');
 
-$form->addInput('is_local','checkbox');
+// $form->addInput('is_local','checkbox');
+// $form->setLabel('is_local', 'Local Link');
+// $form->setCheckbox('is_local', array('1'=>'Local Link'));
+
+$form->addInput('is_local','radio');
 $form->setLabel('is_local', 'Local Link');
-$form->setCheckbox('is_local', array('1'=>'Local Link'));
+$form->setRadio('is_local', array('external link','Local Link'));
 
 $form->addInput('publish', 'checkbox');
 
@@ -81,18 +88,18 @@ $ext = array();
 ob_start();
 ?>
 <script type="text/javascript">
-	$('select[name="position_id"]').on('change', function(){
-		var a = $(this).val();
-		var b = $(this);
-		$.ajax({
+  $('select[name="position_id"]').on('change', function(){
+    var a = $(this).val();
+    var b = $(this);
+    $.ajax({
       type:"POST",
       url:"<?php echo base_url('admin/menu_id') ?>",
       data:{id:a},
       success:function(result){
-      	$('select[name="par_id"]').html(result);
+        $('select[name="par_id"]').html(result);
       }
     });
-	});
+  });
 </script>
 <?php
 $ext = ob_get_contents();

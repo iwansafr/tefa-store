@@ -34,16 +34,16 @@
 		<div class="ban-bottom-w3l">
 			<?php $this->load->view($dir.'banner_bottom') ?>
 		</div>
-		<div class="brands">
+		<!-- <div class="brands">
 			<?php $this->load->view($dir.'brands') ?>
-		</div>
+		</div> -->
 		<?php
 	}else{
 		$this->load->view($content);
 	}?>
 		<div class="newproducts-w3agile">
 			<div class="container">
-				<?php $this->load->view($dir.'new_offers') ?>
+				<?php $this->load->view($dir.'product_new_offers') ?>
 			</div>
 		</div>
 		<div class="footer">

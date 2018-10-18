@@ -16,17 +16,13 @@ if(!empty($field))
 	}
 	if(!empty($this->radio[$field]))
 	{
-		$data_check = array();
-		$data_check = explode(',',$data_value);
-		$data_check = array_filter($data_check);
-
 		foreach ($this->radio[$field] as $cfkey => $cfvalue)
 		{
-			$checked = in_array($cfkey, $data_check) ? 1 : 0;
+			$checked = ($cfkey==$data_value) ? 1 : 0;
 			echo '<div class="radio">';
 			echo '<label>';
 			echo form_radio(array(
-				'name'    => $name.'[]',
+				'name'    => $name,
 				'value'   => $cfkey,
 				'checked' => $checked,
 				'class' => $name
