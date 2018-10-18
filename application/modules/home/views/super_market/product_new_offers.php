@@ -1,179 +1,57 @@
 <h3>New offers</h3>
+<?php 
+$data_config = get_block_config('product_new_offers', $config_template);
+if(!empty($data_config['id']))
+{
+	$product = $this->esg->get_product($data_config['where'], @intval($data_config['limit']));
+}
+?>
 <div class="agile_top_brands_grids">
-	<div class="col-md-3 top_brand_left-1">
-		<div class="hover14 column">
-			<div class="agile_top_brand_left_grid">
-				<div class="agile_top_brand_left_grid_pos">
-					<img src="<?php echo base_url().'templates/super_market/';?>images/offer.png" alt=" " class="img-responsive">
-				</div>
-				<div class="agile_top_brand_left_grid1">
-					<figure>
-						<div class="snipcart-item block">
-							<div class="snipcart-thumb">
-								<a href="products.html"><img title=" " alt=" " src="<?php echo base_url().'templates/super_market/';?>images/14.png"></a>
-								<p>Fried-gram</p>
-								<div class="stars">
-									<i class="fa fa-star blue-star" aria-hidden="true"></i>
-									<i class="fa fa-star blue-star" aria-hidden="true"></i>
-									<i class="fa fa-star blue-star" aria-hidden="true"></i>
-									<i class="fa fa-star blue-star" aria-hidden="true"></i>
-									<i class="fa fa-star gray-star" aria-hidden="true"></i>
-								</div>
-									<h4>$35.99 <span>$55.00</span></h4>
-							</div>
-							<div class="snipcart-details top_brand_home_details">
-								<form action="#" method="post">
-									<fieldset>
-										<input type="hidden" name="cmd" value="_cart">
-										<input type="hidden" name="add" value="1">
-										<input type="hidden" name="business" value=" ">
-										<input type="hidden" name="item_name" value="Fortune Sunflower Oil">
-										<input type="hidden" name="amount" value="35.99">
-										<input type="hidden" name="discount_amount" value="1.00">
-										<input type="hidden" name="currency_code" value="USD">
-										<input type="hidden" name="return" value=" ">
-										<input type="hidden" name="cancel_return" value=" ">
-										<input type="submit" name="submit" value="Add to cart" class="button">
-									</fieldset>
-								</form>
-							</div>
+	<?php 
+	if(!empty($product))
+	{
+		foreach ($product as $key => $value) 
+		{
+			?>
+			<div class="col-md-3 top_brand_left-1">
+				<div class="hover14 column">
+					<div class="agile_top_brand_left_grid">
+						<div class="agile_top_brand_left_grid_pos">
+							<img src="<?php echo base_url().'templates/super_market/';?>images/offer.png" alt=" " class="img-responsive">
 						</div>
-					</figure>
+						<div class="agile_top_brand_left_grid1">
+							<figure>
+								<div class="snipcart-item block">
+									<div class="snipcart-thumb">
+										<a href="<?php echo product_link($value['slug']) ?>"><img title="<?php echo $value['title'] ?>" alt="<?php echo $value['title'] ?>" src="<?php echo !empty($value['image_link']) ? $value['image_link'] : image_module('product', $value['id'].'/'.$value['image']) ?>"></a>
+										<p><?php echo $value['title'] ?></p>
+										<!-- <div class="stars">
+											<i class="fa fa-star blue-star" aria-hidden="true"></i>
+											<i class="fa fa-star blue-star" aria-hidden="true"></i>
+											<i class="fa fa-star blue-star" aria-hidden="true"></i>
+											<i class="fa fa-star blue-star" aria-hidden="true"></i>
+											<i class="fa fa-star gray-star" aria-hidden="true"></i>
+										</div> -->
+											<h4><?php echo 'Rp. '.number_format($value['price']-($value['price']*@intval($value['discount']))/100,'2',',','.') ?> <span><?php echo 'Rp. '.number_format($value['price'], '2',',','.'); ?></span></h4>
+									</div>
+									<div class="snipcart-details top_brand_home_details">
+										<form action="#" method="post" name="add_cart">
+											<fieldset>
+												<input type="hidden" name="id" value="<?php echo $value['id'] ?>">
+												<input type="submit" name="submit" value="Add to cart" class="button" />
+											</fieldset>
+										</form>
+									</div>
+								</div>
+							</figure>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-	<div class="col-md-3 top_brand_left-1">
-		<div class="hover14 column">
-			<div class="agile_top_brand_left_grid">
-				<div class="agile_top_brand_left_grid_pos">
-					<img src="<?php echo base_url().'templates/super_market/';?>images/offer.png" alt=" " class="img-responsive">
-				</div>
-				<div class="agile_top_brand_left_grid1">
-					<figure>
-						<div class="snipcart-item block">
-							<div class="snipcart-thumb">
-								<a href="products.html"><img title=" " alt=" " src="<?php echo base_url().'templates/super_market/';?>images/15.png"></a>
-								<p>Navaratan-dal</p>
-								<div class="stars">
-									<i class="fa fa-star blue-star" aria-hidden="true"></i>
-									<i class="fa fa-star blue-star" aria-hidden="true"></i>
-									<i class="fa fa-star blue-star" aria-hidden="true"></i>
-									<i class="fa fa-star blue-star" aria-hidden="true"></i>
-									<i class="fa fa-star gray-star" aria-hidden="true"></i>
-								</div>
-									<h4>$30.99 <span>$45.00</span></h4>
-							</div>
-							<div class="snipcart-details top_brand_home_details">
-								<form action="#" method="post">
-									<fieldset>
-										<input type="hidden" name="cmd" value="_cart">
-											<input type="hidden" name="add" value="1">
-											<input type="hidden" name="business" value=" ">
-											<input type="hidden" name="item_name" value="basmati rise">
-											<input type="hidden" name="amount" value="30.99">
-											<input type="hidden" name="discount_amount" value="1.00">
-											<input type="hidden" name="currency_code" value="USD">
-											<input type="hidden" name="return" value=" ">
-											<input type="hidden" name="cancel_return" value=" ">
-											<input type="submit" name="submit" value="Add to cart" class="button">
-									</fieldset>
-								</form>
-							</div>
-						</div>
-					</figure>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-3 top_brand_left-1">
-		<div class="hover14 column">
-			<div class="agile_top_brand_left_grid">
-				<div class="agile_top_brand_left_grid_pos">
-					<img src="<?php echo base_url().'templates/super_market/';?>images/offer.png" alt=" " class="img-responsive">
-				</div>
-				<div class="agile_top_brand_left_grid_pos">
-					<img src="<?php echo base_url().'templates/super_market/';?>images/offer.png" alt=" " class="img-responsive">
-				</div>
-				<div class="agile_top_brand_left_grid1">
-					<figure>
-						<div class="snipcart-item block">
-							<div class="snipcart-thumb">
-								<a href="products.html"><img src="<?php echo base_url().'templates/super_market/';?>images/16.png" alt=" " class="img-responsive"></a>
-								<p>White-peasmatar</p>
-								<div class="stars">
-									<i class="fa fa-star blue-star" aria-hidden="true"></i>
-									<i class="fa fa-star blue-star" aria-hidden="true"></i>
-									<i class="fa fa-star blue-star" aria-hidden="true"></i>
-									<i class="fa fa-star blue-star" aria-hidden="true"></i>
-									<i class="fa fa-star gray-star" aria-hidden="true"></i>
-								</div>
-									<h4>$80.99 <span>$105.00</span></h4>
-							</div>
-							<div class="snipcart-details top_brand_home_details">
-								<form action="#" method="post">
-									<fieldset>
-										<input type="hidden" name="cmd" value="_cart">
-										<input type="hidden" name="add" value="1">
-										<input type="hidden" name="business" value=" ">
-										<input type="hidden" name="item_name" value="Pepsi soft drink">
-										<input type="hidden" name="amount" value="80.00">
-										<input type="hidden" name="discount_amount" value="1.00">
-										<input type="hidden" name="currency_code" value="USD">
-										<input type="hidden" name="return" value=" ">
-										<input type="hidden" name="cancel_return" value=" ">
-										<input type="submit" name="submit" value="Add to cart" class="button">
-									</fieldset>
-								</form>
-							</div>
-						</div>
-					</figure>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-3 top_brand_left-1">
-		<div class="hover14 column">
-			<div class="agile_top_brand_left_grid">
-				<div class="agile_top_brand_left_grid_pos">
-					<img src="<?php echo base_url().'templates/super_market/';?>images/offer.png" alt=" " class="img-responsive">
-				</div>
-				<div class="agile_top_brand_left_grid1">
-					<figure>
-						<div class="snipcart-item block">
-							<div class="snipcart-thumb">
-								<a href="products.html"><img title=" " alt=" " src="<?php echo base_url().'templates/super_market/';?>images/17.png"></a>
-								<p>Channa-dal</p>
-								<div class="stars">
-									<i class="fa fa-star blue-star" aria-hidden="true"></i>
-									<i class="fa fa-star blue-star" aria-hidden="true"></i>
-									<i class="fa fa-star blue-star" aria-hidden="true"></i>
-									<i class="fa fa-star blue-star" aria-hidden="true"></i>
-									<i class="fa fa-star gray-star" aria-hidden="true"></i>
-								</div>
-									<h4>$35.99 <span>$55.00</span></h4>
-							</div>
-							<div class="snipcart-details top_brand_home_details">
-								<form action="#" method="post">
-									<fieldset>
-										<input type="hidden" name="cmd" value="_cart">
-										<input type="hidden" name="add" value="1">
-										<input type="hidden" name="business" value=" ">
-										<input type="hidden" name="item_name" value="Fortune Sunflower Oil">
-										<input type="hidden" name="amount" value="35.99">
-										<input type="hidden" name="discount_amount" value="1.00">
-										<input type="hidden" name="currency_code" value="USD">
-										<input type="hidden" name="return" value=" ">
-										<input type="hidden" name="cancel_return" value=" ">
-										<input type="submit" name="submit" value="Add to cart" class="button">
-									</fieldset>
-								</form>
-							</div>
-						</div>
-					</figure>
-				</div>
-			</div>
-		</div>
-	</div>
-		<div class="clearfix"> </div>
+			<?php
+		}
+	}
+	?>
+	
+	<div class="clearfix"> </div>
 </div>

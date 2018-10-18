@@ -1,6 +1,4 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -43,7 +41,7 @@ INSERT INTO `config` (`id`, `name`, `value`) VALUES
 (10, 'alert', '{\"login_failed\":\"Make Sure That Your Username and Password is Correct\",\"login_max_failed\":\"You have failed login 3 time. please wait 30 minute later and login again\",\"save_success\":\"\"}'),
 (11, 'admin-lte_config', '{\"site_title\":\"\",\"site_link\":\"\",\"site_image\":\"\",\"site_keyword\":\"\",\"site_description\":\"\",\"logo_title\":\"\",\"logo_image\":\"\",\"logo_width\":\"200\",\"logo_height\":\"50\"}'),
 (12, 'content_config', '{\"author_detail\":\"1\",\"tag_detail\":\"1\",\"comment_detail\":\"1\",\"created_detail\":\"1\",\"author_list\":\"1\",\"tag_list\":\"1\",\"limit_list\":\"2\",\"created_list\":\"1\"}'),
-(13, 'super_market_widget', '{\"template\":\"super_market\",\"menu_user\":{\"content\":\"menu_3\"},\"menu_top\":{\"content\":\"menu_2\"},\"slider\":{\"content\":\"cat_4\",\"limit\":\"3\"},\"product_top_offer_1\":{\"content\":\"prodcat_2\",\"limit\":\"7\"},\"product_top_offer_2\":{\"content\":\"prodcat_4\",\"limit\":\"7\"},\"product_top_offer_3\":{\"content\":\"prodcat_4\",\"limit\":\"7\"},\"product_banner_top\":{\"content\":\"prodcat_38\",\"limit\":\"3\"},\"banner_bottom\":{\"content\":\"cat_0\",\"limit\":\"7\"},\"brands\":{\"content\":\"0\",\"limit\":\"7\"},\"menu_bottom_1\":{\"content\":\"0\"},\"menu_bottom_2\":{\"content\":\"0\"},\"menu_bottom_3\":{\"content\":\"0\"}}'),
+(13, 'super_market_widget', '{\"template\":\"super_market\",\"menu_user\":{\"content\":\"menu_3\"},\"menu_top\":{\"content\":\"menu_2\"},\"slider\":{\"content\":\"cat_4\",\"limit\":\"3\"},\"product_top_offer_1\":{\"content\":\"prodcat_2\",\"limit\":\"7\"},\"product_top_offer_2\":{\"content\":\"prodcat_4\",\"limit\":\"7\"},\"product_top_offer_3\":{\"content\":\"prodcat_4\",\"limit\":\"7\"},\"product_banner_top\":{\"content\":\"prodcat_38\",\"limit\":\"3\"},\"banner_bottom\":{\"content\":\"cat_0\",\"limit\":\"7\"},\"brands\":{\"content\":\"0\",\"limit\":\"7\"},\"product_new_offers\":{\"content\":\"prodcat_38\",\"limit\":\"7\"},\"menu_bottom_1\":{\"content\":\"0\"},\"menu_bottom_2\":{\"content\":\"0\"},\"menu_bottom_3\":{\"content\":\"0\"}}'),
 (14, 'super_market_config', '{\"site_title\":\"tefa store\",\"site_link\":\"http:\\/\\/localhost\\/tefa-store\",\"site_image\":\"site_image_tefa_store_1538805732.png\",\"site_keyword\":\"\",\"site_description\":\"\",\"logo_title\":\"tefa store\",\"logo_image\":\"logo_image_image_1538784489.png\",\"logo_width\":\"\",\"logo_height\":\"\"}'),
 (15, 'web_type', '{\"type\":\"1\"}');
 
@@ -321,7 +319,11 @@ INSERT INTO `user_login` (`id`, `user_id`, `ip`, `status`, `created`) VALUES
 (80, 63, '::1', 1, '2018-10-12 06:39:40'),
 (81, 63, '127.0.0.1', 1, '2018-10-12 08:17:57'),
 (82, 63, '127.0.0.1', 1, '2018-10-15 10:51:47'),
-(83, 63, '127.0.0.1', 1, '2018-10-15 14:22:31');
+(83, 63, '127.0.0.1', 1, '2018-10-15 14:22:31'),
+(84, 63, '::1', 1, '2018-10-15 21:58:10'),
+(85, 63, '127.0.0.1', 1, '2018-10-16 18:42:59'),
+(86, 63, '::1', 1, '2018-10-17 06:20:22'),
+(87, 63, '::1', 1, '2018-10-18 21:06:23');
 
 DROP TABLE IF EXISTS `visitor`;
 CREATE TABLE `visitor` (
@@ -380,47 +382,32 @@ ALTER TABLE `visitor`
 
 ALTER TABLE `comment`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 ALTER TABLE `config`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
 ALTER TABLE `content`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 ALTER TABLE `content_cat`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 ALTER TABLE `content_tag`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 ALTER TABLE `expedision`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 ALTER TABLE `menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
-
 ALTER TABLE `menu_position`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 ALTER TABLE `product`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 ALTER TABLE `product_cat`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
-
 ALTER TABLE `product_tag`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
-
 ALTER TABLE `user_login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 ALTER TABLE `visitor`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-COMMIT;
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

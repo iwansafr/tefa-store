@@ -10,8 +10,8 @@ if(!empty($parent_id))
   $position_name = $this->data_model->get_one('menu_position','title','WHERE id = '.$data_parent['position_id']);
 }else if(!empty($get_id)){
   $parent_id     = $this->data_model->get_one('menu','par_id','WHERE id = '.$get_id);
-  $data_parent   = $this->data_model->get_one_data('menu',' WHERE id = '.$parent_id);
-  $position_name = $this->data_model->get_one('menu_position','title','WHERE id = '.$data_parent['position_id']);
+  $data_parent   = $this->data_model->get_one_data('menu',' WHERE id = '.@intval($parent_id));
+  $position_name = $this->data_model->get_one('menu_position','title','WHERE id = '.@intval($data_parent['position_id']));
 }
 if(!empty($position_id))
 {

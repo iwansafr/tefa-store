@@ -11,8 +11,9 @@ if(!function_exists('super_market_menu_top'))
 			{
 				if(empty($value['child']))
 				{
+					$link = (!empty($value['is_local'])) ? base_url($value['link']) : $value['link'];
 					?>
-					<li><a href="<?php echo $value['link'] ?>"><?php echo $value['title'] ?></a></li>
+					<li><a href="<?php echo $link ?>"><?php echo $value['title'] ?></a></li>
 					<?php
 				}else{
 					?>
