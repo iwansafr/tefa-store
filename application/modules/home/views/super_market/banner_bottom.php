@@ -29,7 +29,7 @@ if(!empty($data_config['where']))
 		?>
 		<div class="col-md-6 ban-bottom3">
 			<div class="ban-top">
-				<img src="<?php echo image_module('content',$ban['left']['id'].'/'.$ban['left']['image']);?>" class="img-responsive" alt=""/>
+				<img src="<?php echo image_module('content',$ban['left']['id'].'/'.$ban['left']['image']);?>" class="img-responsive" alt="" style="object-fit: contain; width: 540px;height: 295.31px;" />
 			</div>
 			<div class="ban-img">
 				<?php
@@ -41,7 +41,7 @@ if(!empty($data_config['where']))
 						?>
 						<div class=" ban-bottom<?php echo $i; ?>">
 							<div class="ban-top">
-								<img src="<?php echo image_module('content',$cvalue['id'].'/'.$cvalue['image']) ?>" class="img-responsive" alt=""/>
+								<img src="<?php echo image_module('content',$cvalue['id'].'/'.$cvalue['image']) ?>" class="img-responsive" alt="" style="object-fit: contain; width: 259.19px;height: 259.19px;" />
 							</div>
 						</div>
 						<?php
@@ -59,7 +59,7 @@ if(!empty($data_config['where']))
 		?>
 		<div class="col-md-6 ban-bottom">
 			<div class="ban-top">
-				<img src="<?php echo image_module('content',$ban['right']['id'].'/'.$ban['right']['image']);?>" class="img-responsive" alt=""/>
+				<img src="<?php echo image_module('content',$ban['right']['id'].'/'.$ban['right']['image']);?>" class="img-responsive" alt="" style="object-fit: contain; width: 540px;height: 586px;"/>
 			</div>
 		</div>
 		<div class="clearfix"></div>

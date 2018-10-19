@@ -110,7 +110,9 @@ $this->esg->js();
 	// 	paypal.minicart.reset();
 	// }
 </script>
-<?php $this->load->view($dir.'cart') ?>
+<?php
+// $this->load->view($dir.'cart')
+?>
 <script src="<?php echo base_url().'templates/super_market/';?>js/skdslider.min.js"></script>
 <link href="<?php echo base_url().'templates/super_market/';?>css/skdslider.css" rel="stylesheet">
 <script type="text/javascript">

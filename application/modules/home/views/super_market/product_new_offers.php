@@ -1,16 +1,16 @@
 <h3>New offers</h3>
-<?php 
+<?php
 $data_config = get_block_config('product_new_offers', $config_template);
-if(!empty($data_config['id']))
+if(!empty($data_config['where']))
 {
 	$product = $this->esg->get_product($data_config['where'], @intval($data_config['limit']));
 }
 ?>
 <div class="agile_top_brands_grids">
-	<?php 
+	<?php
 	if(!empty($product))
 	{
-		foreach ($product as $key => $value) 
+		foreach ($product as $key => $value)
 		{
 			?>
 			<div class="col-md-3 top_brand_left-1">
@@ -23,7 +23,7 @@ if(!empty($data_config['id']))
 							<figure>
 								<div class="snipcart-item block">
 									<div class="snipcart-thumb">
-										<a href="<?php echo product_link($value['slug']) ?>"><img title="<?php echo $value['title'] ?>" alt="<?php echo $value['title'] ?>" src="<?php echo !empty($value['image_link']) ? $value['image_link'] : image_module('product', $value['id'].'/'.$value['image']) ?>"></a>
+										<a href="<?php echo product_link($value['slug']) ?>"><img title="<?php echo $value['title'] ?>" height="150" alt="<?php echo $value['title'] ?>" src="<?php echo !empty($value['image_link']) ? $value['image_link'] : image_module('product', $value['id'].'/'.$value['image']) ?>"></a>
 										<p><?php echo $value['title'] ?></p>
 										<!-- <div class="stars">
 											<i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -52,6 +52,6 @@ if(!empty($data_config['id']))
 		}
 	}
 	?>
-	
+
 	<div class="clearfix"> </div>
 </div>

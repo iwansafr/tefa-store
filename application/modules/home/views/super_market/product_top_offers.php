@@ -43,7 +43,7 @@ foreach ($num as $key => $value)
 										<figure>
 											<div class="snipcart-item block" >
 												<div class="snipcart-thumb">
-													<a href="<?php echo product_link($vvalue['slug']); ?>"><img title=" " alt=" " src="<?php echo image_module('product', $vvalue['id'].'/'.$vvalue['image'])?>" /></a>
+													<a href="<?php echo product_link($vvalue['slug']); ?>"><img title=" " height="150" alt=" " src="<?php echo image_module('product', $vvalue['id'].'/'.$vvalue['image'])?>" /></a>
 													<p><?php echo $vvalue['title'] ?></p>
 													<!-- <div class="stars">
 														<i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -107,7 +107,7 @@ foreach ($num as $key => $value)
 										<figure>
 											<div class="snipcart-item block" >
 												<div class="snipcart-thumb">
-													<a href="<?php echo product_link($vvalue['slug']); ?>"><img title=" " alt=" " src="<?php echo image_module('product', $vvalue['id'].'/'.$vvalue['image'])?>" /></a>
+													<a href="<?php echo product_link($vvalue['slug']); ?>"><img title=" " alt=" " height="150" src="<?php echo image_module('product', $vvalue['id'].'/'.$vvalue['image'])?>" /></a>
 													<p><?php echo $vvalue['title'] ?></p>
 													<!-- <div class="stars">
 														<i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -179,7 +179,7 @@ foreach ($num as $key => $value)
 										<figure>
 											<div class="snipcart-item block" >
 												<div class="snipcart-thumb">
-													<a href="<?php echo product_link($vvalue['slug']); ?>"><img title=" " alt=" " src="<?php echo image_module('product', $vvalue['id'].'/'.$vvalue['image'])?>" /></a>
+													<a href="<?php echo product_link($vvalue['slug']); ?>"><img title=" " alt=" " height="150" src="<?php echo image_module('product', $vvalue['id'].'/'.$vvalue['image'])?>" /></a>
 													<p><?php echo $vvalue['title'] ?></p>
 													<!-- <div class="stars">
 														<i class="fa fa-star blue-star" aria-hidden="true"></i>
