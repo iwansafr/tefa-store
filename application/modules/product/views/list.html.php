@@ -1,6 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-$data   = array_chunk($data,4);
+$data = array_chunk($data,4);
+$link = !empty($keyword) ? $url_get.'&sort=' : product_cat_link($title).'?sort=';
 ?>
 
 	<div class="breadcrumbs">
@@ -18,10 +19,10 @@ $data   = array_chunk($data,4);
 					<div class="products-right-grids">
 						<div class="sorting">
 							<select id="p_sort" class="frm-field required sect form-control">
-								<option value=""><i class="fa fa-arrow-right" aria-hidden="true"></i>Default sorting</option>
-								<option value="<?php echo product_cat_link($title).'?sort=ph2l' ?>" <?php echo $psort == 'ph2l' ? 'selected' : '' ?>><i class="fa fa-arrow-right" aria-hidden="true"></i>High Price to Low</option>
-								<option value="<?php echo product_cat_link($title).'?sort=pl2h' ?>" <?php echo $psort == 'pl2h' ? 'selected' : '' ?>><i class="fa fa-arrow-right" aria-hidden="true"></i>Low Price to High</option>
-								<option value="<?php echo product_cat_link($title).'?sort=newest' ?>" <?php echo $psort == 'newest' ? 'selected' : '' ?>><i class="fa fa-arrow-right" aria-hidden="true"></i>Newest</option>
+								<option value="<?php echo $link ?>"><i class="fa fa-arrow-right" aria-hidden="true"></i>Default sorting</option>
+								<option value="<?php echo $link.'ph2l' ?>" <?php echo $psort == 'ph2l' ? 'selected' : '' ?>><i class="fa fa-arrow-right" aria-hidden="true"></i>High Price to Low</option>
+								<option value="<?php echo $link.'pl2h' ?>" <?php echo $psort == 'pl2h' ? 'selected' : '' ?>><i class="fa fa-arrow-right" aria-hidden="true"></i>Low Price to High</option>
+								<option value="<?php echo $link.'newest' ?>" <?php echo $psort == 'newest' ? 'selected' : '' ?>><i class="fa fa-arrow-right" aria-hidden="true"></i>Newest</option>
 							</select>
 						</div>
 						<div class="clearfix"> </div>
@@ -48,7 +49,7 @@ $data   = array_chunk($data,4);
 												<figure>
 													<div class="snipcart-item block">
 														<div class="snipcart-thumb">
-															<a href="single.html"><img title=" " alt=" " src="<?php echo image_module('product',$vvalue['id'].'/'.$vvalue['image']) ?>"></a>
+															<a href="<?php echo product_link($vvalue['slug']) ?>"><img title=" " alt=" " src="<?php echo image_module('product',$vvalue['id'].'/'.$vvalue['image']) ?>" style="object-fit: contain;width: 150px;height: 150px;"></a>
 															<p><?php echo $vvalue['title'] ?></p>
 															<h4><?php echo 'Rp. '.number_format($vvalue['price']-($vvalue['price']*@intval($vvalue['discount']))/100,'2',',','.') ?> <br><span><?php echo 'Rp. '.number_format($vvalue['price'],'0',',','.') ?></span></h4>
 														</div>

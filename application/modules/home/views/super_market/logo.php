@@ -21,8 +21,8 @@
 		</a>
 	</div>
 	<div class="w3l_search">
-		<form action="#" method="post" name="cart">
-			<input type="search" name="Search" placeholder="Search for a Product..." required="">
+		<form action="<?php echo base_url('search') ?>" method="get" name="cart">
+			<input type="search" name="keyword" placeholder="Search for a Product..." required="" value="<?php echo !empty($_GET['keyword']) ? $_GET['keyword'] : ''; ?>">
 			<button type="submit" class="btn btn-default search" aria-label="Left Align">
 				<i class="fa fa-search" aria-hidden="true"> </i>
 			</button>

@@ -32,6 +32,11 @@ class Product extends CI_Controller
     echo $total;
   }
 
+  public function cart_checkout()
+  {
+    $this->load->view('home/index');
+  }
+
   public function add_cart()
   {
     $data                = array('msg'=>'failed add product to cart','status'=>0);
@@ -47,7 +52,7 @@ class Product extends CI_Controller
       $id = @intval($post['id']);
       if(!empty($id))
       {
-        $p = $this->db->query('SELECT id,expedision_ids,title,image,price,stock FROM product WHERE id = ? LIMIT 1', $id)->row_array();
+        $p = $this->db->query('SELECT id,expedision_ids,title,image,price,stock,slug,discount FROM product WHERE id = ? LIMIT 1', $id)->row_array();
         $current_data = $this->session->userdata('product_cart');
         if(array_key_exists($id, (array)$current_data))
         {

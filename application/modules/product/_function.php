@@ -12,6 +12,14 @@ function product_link($id = '', $title = '')
   return $output;
 }
 
+function product_price($price = 0, $discount = 0)
+{
+  $price    = @intval($price);
+  $discount = @intval($discount);
+  $real     = $price-(($price*$discount)/100);
+  return number_format($real,'2',',','.');
+}
+
 function product_cat_link($id = '', $title = '')
 {
 	$output = base_url();

@@ -13,7 +13,7 @@ $mod['name'] = $this->router->fetch_class();
 $mod['task'] = $this->router->fetch_method();
 $image       = !empty($site_value['is_custom']) ? image_module('config', $active_template.'_config/'.@$site_value['image']) :image_module('config', 'site/'.@$site_value['image']);
 
-if($mod['name'] == 'content' || $mod['name'] == 'product')
+if(($mod['name'] == 'content' || $mod['name'] == 'product') && $mod['task'] != 'cart_checkout')
 {
 	$site_value = $this->config->item('meta');
 	$image      = @$site_value['image'];

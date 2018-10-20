@@ -1,12 +1,12 @@
 <div class="image">
-	<a href="#">
+	<a href="#" >
 		<button class="w3view-cart" data-toggle="modal" data-target="#cart"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
 	</a>
 </div>
 <div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="cart">
   <div class="modal-dialog" role="document" style="width: 90%;">
     <div class="modal-content">
-    	<form action="" method="post">
+    	<form action="<?php echo base_url('checkout') ?>" method="post">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	        <h4 class="modal-title" id="cart"><?php echo 'cart';?></h4>
@@ -55,9 +55,8 @@
 	      <div class="modal-footer">
 	      	<h4>
 	      		<div id="total_cart">total : <?php echo 'Rp. '.number_format($total,0,',','.') ?></div>
-	      		<?php if($total>0){
-		      		echo '<button class="btn btn-warning" id="btn_checkout" >checkout</button>';
-	      		} ?>
+	      		<br>
+	      		<button class="btn btn-warning" id="btn_checkout" >checkout</button>
 	      	</h4>
 	      </div>
 	    </form>
