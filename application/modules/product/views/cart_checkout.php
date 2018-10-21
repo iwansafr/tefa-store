@@ -66,7 +66,7 @@ if(!empty($cart_product))
 							$sub_total += $s_price;
 							echo '<li>'.$value['title'].' <i>x</i> '.$value['qty'].' <span>Rp. '.product_price($s_price,0).' </span></li>';
 						}
-						$unic_code = random_int(100,999);
+						$unic_code = rand(100,999);
 						$sub_total += $unic_code;
 						?>
 						<li>Unic Code <i>-</i> <span>Rp. <?php echo product_price($unic_code,0); ?></span></li>

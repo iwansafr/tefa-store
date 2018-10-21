@@ -46,7 +46,6 @@ if(!empty($data))
 					<?php
 					if(!empty($data['images']))
 					{
-						echo '<div style="text-align: center; padding: 1px;">';
 						$data['images'] = json_decode($data['images'], 1);
 						$i = 1;
 						foreach ($data['images'] as $imkey => $imvalue)
@@ -56,13 +55,13 @@ if(!empty($data))
 								<img src="<?php echo image_module('product', 'gallery'.'/'.$data['id'].'/'.$imvalue) ?>" class="" style="object-fit: cover;width: 50px;height: 50px;" data-toggle="modal" data-target="#img_image_<?php echo $i?>">
 							</a>
 							<div class="modal fade" id="img_image_<?php echo $i?>" tabindex="-1" role="dialog" aria-labelledby="img_image_<?php echo $i?>">
-							  <div class="modal-dialog" role="document">
+							  <div class="modal-dialog" role="document" syle="width: 90%;">
 							    <div class="modal-content">
 							      <div class="modal-header">
 							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
 							        <h4 class="modal-title" id="img_title_image_<?php echo $i?>">image <?php echo $i; ?></h4>
 							      </div>
-							      <div class="modal-body" style="text-align: center;">
+							      <div class="modal-body" >
 							        <img src="<?php echo image_module('product', 'gallery'.'/'.$data['id'].'/'.$imvalue) ?>" class="img-thumbnail img-responsive">
 							      </div>
 							      <div class="modal-footer">
@@ -73,7 +72,6 @@ if(!empty($data))
 							<?php
 							$i++;
 						}
-						echo '</div>';
 					}?>
 				</div>
 				<div class="col-md-8 agileinfo_single_right">
@@ -121,6 +119,7 @@ if(!empty($data))
 			</div>
 		</div>
 	</div>
+	
 	<?php
 }else{
 	echo msg('please check your url, make sure that your url is correct', 'warning');
