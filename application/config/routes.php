@@ -9,8 +9,10 @@ $route['admin/content_category/(:any)'] = 'admin/content_category/$1';
 // $route['admin/config_header']        = 'adnim/config_header';
 // $route['admin/novel_novel/(:any)']   = 'admin/novel_novel/$1';
 
-$route['search']   = 'product/search';
-$route['checkout'] = 'product/cart_checkout';
+$route['search']          = 'product/search';
+$route['checkout']        = 'product/cart_checkout';
+$route['checkout/detail'] = 'product/checkout_detail';
+$route['invoice']         = 'product/invoice';
 
 /*content*/
 $route['content/api']             = 'content/api';

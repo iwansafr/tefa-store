@@ -72,23 +72,54 @@ if(!empty($cart_product))
 						<li>Unic Code <i>-</i> <span>Rp. <?php echo product_price($unic_code,0); ?></span></li>
 						<li>Total <i>-</i> <span>Rp. <?php echo product_price($sub_total,0); ?></span></li>
 					</ul>
-					<form>
+					<hr>
+					<form action="<?php echo base_url('checkout/detail') ?>" method="post">
 						<div class="panel panel-default">
-							<div class="panel panle-heading">
-								<h3 class="panel panel-title">Data Diri</h3>
+							<div class="panel panel-heading">
+								<h5>Data Diri</h5>
 							</div>
 							<div class="panel panel-body">
-									<label>nama</label>
-									<input type="text" name="" class="form-control">
+								<div class="form-group">
+									<input type="text" name="nama" class="form-control" placeholder="nama" required>
+								</div>
+								<div class="form-group">
+									<input type="number" name="hp" class="form-control" placeholder="no hp" required>
+								</div>
+								<div class="form-group">
+									<input type="text" name="prov" class="form-control" placeholder="Provinsi" required>
+								</div>
+								<div class="form-group">
+									<input type="text" name="kab" class="form-control" placeholder="Kabupaten" required>
+								</div>
+								<div class="form-group">
+									<input type="text" name="kec" class="form-control" placeholder="Kecamatan" required>
+								</div>
+								<div class="form-group">
+									<input type="number" name="pos" class="form-control" placeholder="kode pos" required>
+								</div>
+								<div class="form-group">
+									<textarea class="form-control" name="alamat" placeholder="alamat lengkap" required></textarea>
+								</div>
+								<div class="form-group">
+									<select class="form-control" name="expedision" required>
+										<option value="">Pilih Expedisi</option>
+										<?php 
+										foreach($expedision as $key => $value) 
+										{
+											echo '<option value="'.$value['id'].'">'.$value['title'].'</option>';
+										} 
+										?>
+									</select>
+								</div>
 							</div>
 							<div class="panel panel-footer">
-
+								<input type="submit" class="btn btn-primary" value="submit">
 							</div>
 						</div>
 					</form>
 				</div>
 				<div class="checkout-right-basket">
-					<a href="single.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue Shopping</a>
+					<a href="<?php echo base_url(); ?>"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue Shopping</a>
 				</div>
 				<div class="clearfix"> </div>
 			</div>

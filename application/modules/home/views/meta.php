@@ -43,14 +43,10 @@ if(($mod['name'] == 'content' || $mod['name'] == 'product') && $mod['task'] != '
 <meta content="<?php echo $site_value['title'] ?>" property="og:title"/>
 <meta content="<?php echo $site_value['description'] ?>" property="og:description"/>
 <meta content="<?php echo $image ?>" itemprop='url'/>
-
-<link itemprop="thumbnailUrl" href="<?php echo $image ?>">
-<span itemprop="thumbnail" itemscope itemtype="http://schema.org/ImageObject"> <link itemprop="url" href="<?php echo $image ?>"> </span>
-
 <!-- <link href="<?php echo base_url().'templates/admin/'; ?>css/bootstrap.min.css" rel="stylesheet"> -->
 <!-- <link href="<?php echo base_url().'templates/admin/'; ?>font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
-<!-- <link href="<?php echo base_url().'templates/admin/'; ?>modules/esg/css/style.css" rel="stylesheet" type="text/css"> -->
-<!-- <link href="<?php echo base_url().'templates/'.$active_template.'/'; ?>css/style.css" rel="stylesheet"> -->
+<link href="<?php echo base_url().'templates/admin/'; ?>modules/esg/css/style.css" rel="stylesheet" type="text/css">
+<link href="<?php echo base_url().'templates/'.$active_template.'/'; ?>css/style.css" rel="stylesheet">
 <!-- <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css"> -->
 <script src="<?php echo base_url().'templates/admin/'; ?>js/plugins/ckeditor/ckeditor.js"></script>
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -62,6 +58,10 @@ if(($mod['name'] == 'content' || $mod['name'] == 'product') && $mod['task'] != '
 <script type="text/javascript">
   var _URL = '<?php echo base_url() ?>';
 </script>
+
+<link itemprop="thumbnailUrl" href="<?php echo $image ?>">
+<!-- <span itemprop="thumbnail" itemscope itemtype="http://schema.org/ImageObject"> <link itemprop="url" href="<?php echo $image ?>"> </span> -->
+
 <?php
 if(!empty($site_value))
 {

@@ -31,12 +31,21 @@ class Product extends CI_Controller
     }
     echo $total;
   }
-
+  public function invoice()
+  {
+    $data['data'] = $this->input->get();
+    $this->load->view('invoice', $data);
+  }
   public function cart_checkout()
+  {
+    $this->db->select('id,title');
+    $data['expedision'] = $this->db->get_where('expedision')->result_array();
+    $this->load->view('home/index',$data);
+  }
+  public function checkout_detail()
   {
     $this->load->view('home/index');
   }
-
   public function add_cart()
   {
     $data                = array('msg'=>'failed add product to cart','status'=>0);

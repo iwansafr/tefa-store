@@ -8,6 +8,18 @@ class product_model extends CI_Model
     $this->load->library('esg');
 	}
 
+  public function generate_user($username = '')
+  {
+    $username   = empty($username) ? substr(encrypt(time()), 55,5) : $username;
+    $user_exist = $this->data_model->get_one('product_order','username', "WHERE username = '$username'");
+    if(!empty($user_exist))    
+    {
+      call_user_func(array('product_model', $user_exist));
+    }else{
+      return $username;
+    }
+  }
+
   public function set_meta($id = '', $title = '', $table = '')
   {
     $site_value             = $this->esg->get_config('site');
