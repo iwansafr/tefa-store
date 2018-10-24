@@ -1,4 +1,4 @@
-<?php 
+<?php
 _func('product');
 $data            = $this->data_model->get_one_data('product_order',"WHERE username = '$u'");
 $active_template = $this->esg->get_config('templates');
@@ -77,7 +77,7 @@ $product = json_decode($data['order_detail'],1);
 			<div class="panel-body">
 				<?php
 				$i = 1;
-				foreach ($product as $key => $value) 
+				foreach ($product as $key => $value)
 				{
 					echo '#.'.$i.' '.$value['title'];
 					echo '<br>';
@@ -102,9 +102,9 @@ $product = json_decode($data['order_detail'],1);
 						<tbody>
 							<?php
 							$items = $product;
-							
+
 							$sub_total = 0;
-							
+
 							foreach ($items as $key => $value)
 							{
 								?>
@@ -155,7 +155,7 @@ $product = json_decode($data['order_detail'],1);
 				</div>
 			</div>
 		</div>
-		<?php 
+		<?php
 		if($data['status'] > 1)
 		{
 			?>
@@ -206,13 +206,21 @@ $product = json_decode($data['order_detail'],1);
 		      <div class="modal-body" style="text-align: center;">
 		      	<div class="panel">
 		      		<div class="panel-body" id="payment_body">
-		      			
+		      			Silahkan Transfer dengan total <?php echo 'Rp. '.number_format($total, 2, ',', '.'); ?><br>
+		      			ke Rekening :<br>
+		      			BCA : No rek : 123456789 , A/n Iwan Safrudin<br>
+		      			upload bukti pembayaran dengan cara :<br>
+		      			login dengan akun :<br>
+		      			username : <?php echo $data['username'];?><br>
+		      			password : <?php echo $data['password'];?><br>
+		      			atau upload bukti pembayaran sekarang <a href="<?php echo base_url('confirm_payment').'?u='.$data['username'].'&t='.encrypt($data['username']);?>" class="btn btn-default">klik di sini</a>
+
 		      		</div>
 		      	</div>
 		      </div>
 		      <div class="modal-footer">
 		      	<h4>
-		      		<button class="btn btn-default">Close</button>
+		      		<button class="btn btn-default" class="close" type="button" data-dismiss="modal">Close</button>
 		      	</h4>
 		      </div>
 	    </div>

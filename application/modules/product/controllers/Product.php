@@ -31,6 +31,23 @@ class Product extends CI_Controller
     }
     echo $total;
   }
+  public function confirm_payment()
+  {
+    $data['data'] = $this->input->get();
+    if(!empty($data['data']['u']) && !empty($data['data']['t']))
+    {
+      if(decrypt($data['data']['u'], $data['data']['t']))
+      {
+        $q = $this->db->query('SELECT id FROM product_order WHERE username = ? LIMIT 1', $data['data']['u'])->row_array();
+        $data['data']['order_id'] = $q['id'];
+        $this->load->view('home/index',$data);
+      }else{
+        redirect(base_url());
+      }
+    }else{
+      redirect(base_url());
+    }
+  }
   public function invoice()
   {
     $data['data'] = $this->input->get();
