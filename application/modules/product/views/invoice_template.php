@@ -20,7 +20,7 @@ $product = json_decode($data['order_detail'],1);
 	<div class="container-fluid invoice-container">
 			<div class="row invoice-header">
 				<div class="invoice-col">
-					<p><img src="<?php echo image_module('config',$active_template['templates'].'_config/'.$site_value['logo_image']) ?>" title="esoftgreat"></p>
+					<p><img src="<?php echo image_module('config',$active_template['templates'].'_config/'.$site_value['logo_image']) ?>" height="100" title="esoftgreat"></p>
 					<h3>Invoice #<?php echo !empty($data['id']) ? $data['id'] : time(); ?></h3>
 				</div>
 				<?php
