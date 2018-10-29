@@ -125,5 +125,6 @@ $this->esg->js();
 
 		});
 </script>
+<img src="<?php echo base_url('templates/super_market/images/loading.gif') ?>" id="loading" style="display: none;">
 </body>
 </html>
