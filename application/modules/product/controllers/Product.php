@@ -18,6 +18,28 @@ class Product extends CI_Controller
 
   }
 
+  public function register()
+  {
+    $status = 0;
+    $data['data'] = $this->input->post();
+    $data['data']['agree'] = !empty($data['data']['agree']) ? 'checked' : '';
+    if(!empty($data['data']['email']))
+    {
+      $email_exist = $this->db->query('SELECT id FROM user WHERE email = ?', $data['data']['email'])->row_array();
+      if(!empty($email_exist))
+      {
+        $data['data']['message']['email'] = 'email is exist';
+      }else{
+        $status  = 1;
+      }
+    }
+    if(@$data['data']['password']!=@$data['data']['cpassword'])
+    {
+      $data['data']['message']['password'] = 'password didnt match';
+    }
+    $this->load->view('home/index', $data);
+  }
+
   public function total_cart()
   {
     $current_data = $this->session->userdata('product_cart');

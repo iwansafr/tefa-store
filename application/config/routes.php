@@ -15,6 +15,8 @@ $route['checkout/detail'] = 'product/checkout_detail';
 $route['invoice']         = 'product/invoice';
 $route['confirm_payment'] = 'product/confirm_payment';
 
+$route['register'] = 'product/register';
+
 /*content*/
 $route['content/api']             = 'content/api';
 $route['content/category/(:any)'] = 'content/category/$1';
