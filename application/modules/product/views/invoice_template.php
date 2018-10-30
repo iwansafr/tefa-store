@@ -20,7 +20,8 @@ $product = json_decode($data['order_detail'],1);
 	<div class="container-fluid invoice-container">
 			<div class="row invoice-header">
 				<div class="invoice-col">
-					<p><img src="<?php echo image_module('config',$active_template['templates'].'_config/'.$site_value['logo_image']) ?>" height="100" title="esoftgreat"></p>
+					<!-- <p><img src="<?php echo image_module('config',$active_template['templates'].'_config/'.$site_value['logo_image']) ?>" height="100" title="esoftgreat"></p> -->
+					<p><img src="<?php echo image_module('config',$active_template['templates'].'_config/'.$site_value['logo_image']) ?>"  title="esoftgreat" style="object-fit: contain; width: 100%"></p>
 					<h3>Invoice #<?php echo !empty($data['id']) ? $data['id'] : time(); ?></h3>
 				</div>
 				<?php
@@ -32,7 +33,8 @@ $product = json_decode($data['order_detail'],1);
 					<!-- <div class="invoice-status" style="border : <?php echo $color ?> solid 1px; text-align: center;">
 						<span style="<?php echo $style ?>"><?php echo $data['status'] ?></span>
 					</div> -->
-					<img src="<?php echo base_url().'templates/'.$active_template['templates'].'/invoice/'.$img ?>" style="margin-lef: 100px;transform :rotate(30deg); height: 50px; height: 60px; width: 230px;">
+					<!-- <img src="<?php echo base_url().'templates/'.$active_template['templates'].'/invoice/'.$img ?>" style="margin-lef: 100px;transform :rotate(30deg); height: 50px; height: 60px; width: 230px;"> -->
+					<img src="<?php echo base_url().'templates/'.$active_template['templates'].'/invoice/'.$img ?>" style="margin-lef: 100px;transform :rotate(30deg);object-fit: contain;width: 100%;margin-top: 15%;">
 				</div>
 			</div>
 			<hr>
@@ -155,6 +157,29 @@ $product = json_decode($data['order_detail'],1);
 				</div>
 			</div>
 		</div>
+		<p>* Transfer To</p>
+		<div class="transactions-container small-text">
+			<div class="table-responsive">
+				<table class="table table-condensed">
+					<thead>
+						<tr>
+							<td class=""><strong>Nominal</strong></td>
+							<td class=""><strong>Bank</strong></td>
+							<td class=""><strong>A/N</strong></td>
+							<td class=""><strong>No Rekening</strong></td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class=""><?php echo 'Rp. '.number_format($total, 2, ',', '.'); ?></td>
+							<td class="">BCA</td>
+							<td class="">Iwan Safrudin</td>
+							<td class="">123456789</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
 		<?php
 		if($data['status'] > 1)
 		{
@@ -172,13 +197,13 @@ $product = json_decode($data['order_detail'],1);
 							</tr>
 						</thead>
 						<tbody>
-															<tr>
-									<td class=""><?php echo date('d/m/Y') ?></td>
-									<td class="">Transfer ke Bank BCA</td>
-									<td class="">BCA-<?php echo substr(time(), 0,4).'-'.substr(time(), 5,8) ?></td>
-									<td class=""><?php echo 'Rp. '.number_format($total, 2, ',', '.'); ?></td>
-								</tr>
-														<tr>
+							<tr>
+								<td class=""><?php echo date('d/m/Y') ?></td>
+								<td class="">Transfer ke Bank BCA</td>
+								<td class="">BCA-<?php echo substr(time(), 0,4).'-'.substr(time(), 5,8) ?></td>
+								<td class=""><?php echo 'Rp. '.number_format($total, 2, ',', '.'); ?></td>
+							</tr>
+							<tr>
 								<td class="text-right" colspan="3"><strong>Balance</strong></td>
 								<td class="">Rp. 0,00 </td>
 							</tr>
@@ -191,7 +216,7 @@ $product = json_decode($data['order_detail'],1);
 		?>
 		<div class="pull-right btn-group btn-group-sm hidden-print">
 			<a href="javascript:window.print()" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-			<a href="#" class="btn btn-default" data-toggle="modal" data-target="#payment"><i class="fa fa-money"></i> Cara Pembayaran</a>
+			<!-- <a href="#" class="btn btn-default" data-toggle="modal" data-target="#payment"><i class="fa fa-money"></i> Cara Konfirmasi</a> -->
 			<!-- <a href="dl.php?type=i&amp;id=871068" class="btn btn-default"><i class="fa fa-download"></i> Download</a> -->
 		</div>
 	</div>
@@ -206,15 +231,7 @@ $product = json_decode($data['order_detail'],1);
 		      <div class="modal-body" style="text-align: center;">
 		      	<div class="panel">
 		      		<div class="panel-body" id="payment_body">
-		      			Silahkan Transfer dengan total <?php echo 'Rp. '.number_format($total, 2, ',', '.'); ?><br>
-		      			ke Rekening :<br>
-		      			BCA : No rek : 123456789 , A/n Iwan Safrudin<br>
-		      			upload bukti pembayaran dengan cara :<br>
-		      			login dengan akun :<br>
-		      			username : <?php echo $data['username'];?><br>
-		      			password : <?php echo $data['password'];?><br>
-		      			atau upload bukti pembayaran sekarang <a href="<?php echo base_url('confirm_payment').'?u='.$data['username'].'&t='.encrypt($data['username']);?>" class="btn btn-default">klik di sini</a>
-
+		      			upload bukti pembayaran sekarang <br><a href="<?php echo base_url('confirm_payment').'?u='.$data['username'].'&t='.encrypt($data['username']);?>" class="btn btn-default">klik di sini</a>
 		      		</div>
 		      	</div>
 		      </div>
