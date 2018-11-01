@@ -236,6 +236,10 @@ class Admin extends CI_Controller
     $this->load->view('admin/index',$data);
   }
 
+  public function config_profile($name = '')
+  {
+    $this->load->view('admin/index');
+  }
   public function config_alert($name = '')
   {
     $this->load->view('admin/index');

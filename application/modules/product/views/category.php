@@ -48,47 +48,60 @@ if(!empty($id))
 	$url_get = base_url('cat/'.$slug.'.html'.$x_link);
 	$header_title = 'Category of '.$cat_title;
 	$table = 'product';
-}else{
-	$url_get = base_url('product/category/');
-	$header_title = 'All Category';
-	$table = 'product_cat';
 }
 
-if(!empty($id))
+if(!empty($table))
 {
-	$this->db->like('cat_ids', $id, 'both');
-}
-if(empty($data) && empty($cat_title))
-{
-	$data = $this->db->get_where($table,'publish = 1',$limit,$page)->result_array();
-}
-if(!empty($id))
-{
-	$this->db->like('cat_ids', $id, 'both');
-}
-if(empty($total_rows) && empty($cat_title))
-{
-	$total_rows = $this->db->get_where($table,'publish = 1')->num_rows();
-}
-
-$config = pagination($total_rows,$limit,$url_get);
-$this->pagination->initialize($config);
-$page_nation = $this->pagination->create_links();
-
-$view_data                    = array();
-$view_data['header_title']    = $header_title;
-$view_data['data']            = $data;
-$view_data['page_nation']     = $page_nation;
-$view_data['config_template'] = $config_template;
-if($type=='grid')
-{
-	$header_title = $cat_title;
-	include 'grid.html.php';
-}else{
-	if(file_exists(APPPATH.'modules/home/views/'.$active_template.'/'.'product/list.html.php'))
+	if(!empty($id))
 	{
-		$this->load->view('home/'.$active_template.'/'.'product/list.html.php', $view_data);
-	}else{
-		include 'list.html.php';
+		$this->db->like('cat_ids', $id, 'both');
 	}
+	if(empty($data) && empty($cat_title))
+	{
+		$data = $this->db->get_where($table,'publish = 1',$limit,$page)->result_array();
+	}
+	if(!empty($id))
+	{
+		$this->db->like('cat_ids', $id, 'both');
+	}
+	if(empty($total_rows) && empty($cat_title))
+	{
+		$total_rows = $this->db->get_where($table,'publish = 1')->num_rows();
+	}
+
+	$config = pagination($total_rows,$limit,$url_get);
+	$this->pagination->initialize($config);
+	$page_nation = $this->pagination->create_links();
+
+	$view_data                    = array();
+	$view_data['header_title']    = $header_title;
+	$view_data['data']            = $data;
+	$view_data['page_nation']     = $page_nation;
+	$view_data['config_template'] = $config_template;
+	if($type=='grid')
+	{
+		$header_title = $cat_title;
+		include 'grid.html.php';
+	}else{
+		if(file_exists(APPPATH.'modules/home/views/'.$active_template.'/'.'product/list.html.php'))
+		{
+			$this->load->view('home/'.$active_template.'/'.'product/list.html.php', $view_data);
+		}else{
+			include 'list.html.php';
+		}
+	}
+}else{
+	?>
+	<div class="breadcrumbs">
+		<div class="container">
+			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+				<li><a href="<?php echo base_url() ?>"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+				<li class="active">404</li>
+			</ol>
+		</div>
+	</div>
+	<?php
+	echo '<div class="container">';
+	echo msg('content not found', 'warning');
+	echo '</div>';
 }

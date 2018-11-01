@@ -86,6 +86,11 @@ if(!empty($admin_templates))
 	    'link' => base_url('admin/config/'),
 	    'list' => array(
 	    	array(
+	        'title' => 'Profile',
+	        'icon' => 'fa-cog',
+	        'link' => base_url('admin/config_profile/profile')
+	      ),
+	    	array(
 	        'title' => 'Header',
 	        'icon' => 'fa-cog',
 	        'link' => base_url('admin/config_header/header')

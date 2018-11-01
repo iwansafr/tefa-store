@@ -27,6 +27,9 @@ if(is_admin())
   $form->setValue('link', $data['slug'].'.html');
   $form->setAttribute('link', array('readonly'=>'readonly'));
 
+  $form->addInput('is_local','radio');
+  $form->setLabel('is_local', 'Local Link');
+  $form->setRadio('is_local', array('external link','Local Link'));
 
   $form->addInput('publish', 'checkbox');
 

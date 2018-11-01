@@ -14,6 +14,7 @@
       	<div class="panel">
       		<div class="panel-body" id="cart_body">
       			<?php
+      			$profile = $this->esg->get_config('profile');
       			$cart_product = $this->session->userdata('product_cart');
       			$total = 0;
       			$text = '';
@@ -68,7 +69,7 @@
       		<div class="form-group">
 			    	<form action="<?php echo base_url('checkout') ?>" method="post" class="form-inline form-group">
 	      			<button class="btn btn-warning" id="btn_checkout" >checkout</button>
-				    	<a href="https://wa.me/6285640510460?text=<?php echo $text;?>" class="btn btn-success"><i class="fa fa-whatsapp"></i> checkout via wa</a>
+				    	<a href="https://wa.me/<?php echo @$profile['wa'];?>?text=<?php echo $text;?>" class="btn btn-success"><i class="fa fa-whatsapp"></i> checkout via wa</a>
 				    </form>
       		</div>
       	</h4>

@@ -1,0 +1,20 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
+
+$form = new Ecrud();
+$form->init('param');
+$form->setTable('config');
+$form->setParamName('profile');
+$form->addInput('email', 'text');
+$form->setType('email', 'email');
+$form->addInput('address', 'textarea');
+$form->addInput('phone', 'text');
+$form->setType('phone', 'number');
+$form->addInput('wa', 'text');
+$form->setType('wa', 'number');
+$form->addInput('no_rek','text');
+$form->setLabel('no_rek','Nomor Rekening');
+$form->addInput('an_rek','text');
+$form->setLabel('an_rek','Rekening Atas Nama');
+$form->addInput('bank','text');
+$form->setLabel('bank','Nama Bank');
+$form->form();

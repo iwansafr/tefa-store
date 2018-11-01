@@ -1,8 +1,10 @@
 <div class="container">
 	<div class="w3ls_logo_products_left1">
 		<ul class="phone_email">
-			<?php $phone = '085000000000' ?>
-			<li><i class="fa fa-phone" aria-hidden="true"></i>Order online or call us : <a href="tel:<?php echo $phone ?>" style="color: #212121;"><?php echo $phone ?></a></li>
+			<?php
+			$profile = $this->esg->get_config('profile');
+			?>
+			<li><i class="fa fa-phone" aria-hidden="true"></i>Order online or call us : <a href="tel:<?php echo @$profile['phone'] ?>" style="color: #212121;"><?php echo @$profile['phone'] ?></a></li>
 		</ul>
 	</div>
 	<div class="w3ls_logo_products_left">

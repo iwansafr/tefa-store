@@ -3,6 +3,7 @@ _func('product');
 $data            = $this->data_model->get_one_data('product_order',"WHERE username = '$u'");
 $active_template = $this->esg->get_config('templates');
 $site_value      = $this->esg->get_config($active_template['templates'].'_config');
+$profile = $this->esg->get_config('profile');
 
 $buyer   = json_decode($data['buyer_detail'],1);
 $product = json_decode($data['order_detail'],1);
@@ -21,7 +22,7 @@ $product = json_decode($data['order_detail'],1);
 			<div class="row invoice-header">
 				<div class="invoice-col">
 					<!-- <p><img src="<?php echo image_module('config',$active_template['templates'].'_config/'.$site_value['logo_image']) ?>" height="100" title="esoftgreat"></p> -->
-					<p><img src="<?php echo image_module('config',$active_template['templates'].'_config/'.$site_value['logo_image']) ?>"  title="esoftgreat" style="object-fit: contain; width: 100%"></p>
+					<p><img src="<?php echo image_module('config',$active_template['templates'].'_config/'.$site_value['logo_image']) ?>"  title="esoftgreat" style="object-fit: contain; width: 50%"></p>
 					<h3>Invoice #<?php echo !empty($data['id']) ? $data['id'] : time(); ?></h3>
 				</div>
 				<?php
@@ -42,11 +43,10 @@ $product = json_decode($data['order_detail'],1);
 				<div class="invoice-col right">
 					<strong>Pay To</strong>
 					<address class="small-text">
-						esoftgreat<br>
+						<?php echo @$profile['an_rek'] ?><br>
 						Alamat : <br>
-						Jl. Tulakan Km 01,
-						Donorojo Jepara <br>
-						Telp : 08540510460 / 085290335332
+						<?php echo @$profile['address'] ?> <br>
+						Telp : <?php echo @$profile['phone'] ?>
 					</address>
 				</div>
 				<div class="invoice-col">
@@ -172,9 +172,9 @@ $product = json_decode($data['order_detail'],1);
 					<tbody>
 						<tr>
 							<td class=""><?php echo 'Rp. '.number_format($total, 2, ',', '.'); ?></td>
-							<td class="">BCA</td>
-							<td class="">Iwan Safrudin</td>
-							<td class="">123456789</td>
+							<td class=""><?php echo @$profile['bank'] ?></td>
+							<td class=""><?php echo @$profile['an_rek'] ?></td>
+							<td class=""><?php echo @$profile['no_rek'] ?></td>
 						</tr>
 					</tbody>
 				</table>
@@ -199,8 +199,8 @@ $product = json_decode($data['order_detail'],1);
 						<tbody>
 							<tr>
 								<td class=""><?php echo date('d/m/Y') ?></td>
-								<td class="">Transfer ke Bank BCA</td>
-								<td class="">BCA-<?php echo substr(time(), 0,4).'-'.substr(time(), 5,8) ?></td>
+								<td class="">Transfer ke Bank <?php echo @$profile['bank'] ?></td>
+								<td class=""><?php echo @$profile['bank'] ?>-<?php echo substr(time(), 0,4).'-'.substr(time(), 5,8) ?></td>
 								<td class=""><?php echo 'Rp. '.number_format($total, 2, ',', '.'); ?></td>
 							</tr>
 							<tr>

@@ -50,16 +50,23 @@
 			<div class="container">
 				<div class="w3_footer_grids">
 					<div class="col-md-3 w3_footer_grid">
+						<?php
+						$menu_bottom = array();
+						for($i=1;$i<4;$i++)
+						{
+							$menu_bottom[$i]['menu'] = 'menu_bottom_'.$i;
+						}
+						?>
 						<?php $this->load->view($dir.'contact') ?>
 					</div>
 					<div class="col-md-3 w3_footer_grid">
-						<?php $this->load->view($dir.'menu_bottom') ?>
+						<?php $this->load->view($dir.'menu_bottom',$menu_bottom[1]) ?>
 					</div>
 					<div class="col-md-3 w3_footer_grid">
-						<?php $this->load->view($dir.'menu_bottom') ?>
+						<?php $this->load->view($dir.'menu_bottom',$menu_bottom[2]) ?>
 					</div>
 					<div class="col-md-3 w3_footer_grid">
-						<?php $this->load->view($dir.'menu_bottom') ?>
+						<?php $this->load->view($dir.'menu_bottom',$menu_bottom[3]) ?>
 					</div>
 					<div class="clearfix"> </div>
 				</div>

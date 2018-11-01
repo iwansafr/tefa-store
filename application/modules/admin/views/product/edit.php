@@ -58,7 +58,7 @@ $form->setMultiSelect('expedision_ids','expedision','id,par_id,title');
 $form->addInput('tag_ids', 'text');
 $form->setLabel('tag_ids', 'Add some tags : ');
 $form->setAttribute('tag_ids', array('data-role'=>'tagsinput','placeholder'=>'separate with coma'));
-
+$form->setRequired('All');
 if(!empty($get_id))
 {
   if(empty($_POST['tag_ids']))
