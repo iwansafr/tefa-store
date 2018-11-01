@@ -629,7 +629,7 @@ class Ecrud extends CI_Model
 		{
 			$types = explode(',',$this->accept[$title]);
 			$data = array();
-			$forbiden = array('*','php','exe','deb');
+			$forbiden = array('*','php','exe','deb','PHP','EXE','DEB');
 			foreach($types AS $c => $d)
 			{
 				$tmp = $d;
@@ -654,7 +654,7 @@ class Ecrud extends CI_Model
 			}
 			$types = $data;
 		}else{
-			$types = explode(',','.jpg,.jpeg,.png,.bmp,.gif');
+			$types = explode(',','.jpg,.jpeg,.png,.bmp,.gif,.JPG,.JPEG,.PNG,.BMP,.GIF');
 		}
 		if(!empty($type))
 		{
