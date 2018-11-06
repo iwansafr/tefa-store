@@ -1,5 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 $num = array(1,2,3);
+$profile = $this->esg->get_config('profile');
 foreach ($num as $key => $value)
 {
 	$data_config = get_block_config('product_top_offer_'.$value, $config_template);
@@ -32,6 +33,12 @@ foreach ($num as $key => $value)
 						<?php
 						foreach ($value as $vkey => $vvalue)
 						{
+							$text = '';
+							$link = product_link($vvalue['slug']);
+							$text .= 'nama product : '.$vvalue['title'];
+      				$text .= "\n";
+      				$text .= $link;
+      				$text = urlencode($text);
 							?>
 							<div class="col-md-4 top_brand_left">
 							<div class="hover14 column">
@@ -43,7 +50,7 @@ foreach ($num as $key => $value)
 										<figure>
 											<div class="snipcart-item block" >
 												<div class="snipcart-thumb">
-													<a href="<?php echo product_link($vvalue['slug']); ?>"><img title=" " height="150" alt=" " src="<?php echo image_module('product', $vvalue['id'].'/'.$vvalue['image'])?>" /></a>
+													<a href="<?php echo $link; ?>"><img title=" " height="150" alt=" " src="<?php echo image_module('product', $vvalue['id'].'/'.$vvalue['image'])?>" /></a>
 													<p><?php echo $vvalue['title'] ?></p>
 													<!-- <div class="stars">
 														<i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -52,13 +59,24 @@ foreach ($num as $key => $value)
 														<i class="fa fa-star blue-star" aria-hidden="true"></i>
 														<i class="fa fa-star gray-star" aria-hidden="true"></i>
 													</div> -->
-													<h4><?php echo 'Rp. '.number_format($vvalue['price']-($vvalue['price']*@intval($vvalue['discount']))/100,'2',',','.') ?> <span><?php echo 'Rp. '.number_format($vvalue['price'], '2',',','.'); ?></span></h4>
+													<h4 class="">
+														<?php
+														echo 'Rp. '.number_format($vvalue['price']-($vvalue['price']*@intval($vvalue['discount']))/100,'2',',','.');
+														if(!empty($vvalue['discount']))
+														{
+															?>
+															<span><?php echo 'Rp. '.number_format($vvalue['price'],'2',',','.') ?></span>
+															<?php
+														}?>
+
+													</h4>
 												</div>
 												<div class="snipcart-details top_brand_home_details">
 													<form action="#" method="post" name="add_cart">
 														<fieldset>
 															<input type="hidden" name="id" value="<?php echo $vvalue['id'] ?>">
 															<input type="submit" name="submit" value="Add to cart" class="button" />
+															<a href="https://wa.me/<?php echo @$profile['wa'];?>?text=<?php echo $text;?>" class="btn btn-success" style="margin-top: 5%;">Order Via WA <i class="fa fa-whatsapp"></i></a>
 														</fieldset>
 													</form>
 												</div>
@@ -96,6 +114,12 @@ foreach ($num as $key => $value)
 						<?php
 						foreach ($value as $vkey => $vvalue)
 						{
+							$text = '';
+							$link = product_link($vvalue['slug']);
+							$text .= 'nama product : '.$vvalue['title'];
+      				$text .= "\n";
+      				$text .= $link;
+      				$text = urlencode($text);
 							?>
 							<div class="col-md-4 top_brand_left">
 							<div class="hover14 column">
@@ -107,7 +131,7 @@ foreach ($num as $key => $value)
 										<figure>
 											<div class="snipcart-item block" >
 												<div class="snipcart-thumb">
-													<a href="<?php echo product_link($vvalue['slug']); ?>"><img title=" " alt=" " height="150" src="<?php echo image_module('product', $vvalue['id'].'/'.$vvalue['image'])?>" /></a>
+													<a href="<?php echo $link; ?>"><img title=" " alt=" " height="150" src="<?php echo image_module('product', $vvalue['id'].'/'.$vvalue['image'])?>" /></a>
 													<p><?php echo $vvalue['title'] ?></p>
 													<!-- <div class="stars">
 														<i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -116,7 +140,17 @@ foreach ($num as $key => $value)
 														<i class="fa fa-star blue-star" aria-hidden="true"></i>
 														<i class="fa fa-star gray-star" aria-hidden="true"></i>
 													</div> -->
-													<h4><?php echo 'Rp. '.number_format($vvalue['price']-($vvalue['price']*@intval($vvalue['discount']))/100,'2',',','.') ?> <span><?php echo 'Rp. '.number_format($vvalue['price'], '2',',','.'); ?></span></h4>
+													<h4 class="">
+														<?php
+														echo 'Rp. '.number_format($vvalue['price']-($vvalue['price']*@intval($vvalue['discount']))/100,'2',',','.');
+														if(!empty($vvalue['discount']))
+														{
+															?>
+															<span><?php echo 'Rp. '.number_format($vvalue['price'],'2',',','.') ?></span>
+															<?php
+														}?>
+
+													</h4>
 												</div>
 												<div class="snipcart-details top_brand_home_details">
 													<form action="#" method="post">
@@ -131,6 +165,7 @@ foreach ($num as $key => $value)
 															<input type="hidden" name="return" value=" " />
 															<input type="hidden" name="cancel_return" value=" " />
 															<input type="submit" name="submit" value="Add to cart" class="button" />
+															<a href="https://wa.me/<?php echo @$profile['wa'];?>?text=<?php echo $text;?>" class="button btn btn-success" style="margin-top: 5%;">Order Via WA <i class="fa fa-whatsapp"></i></a>
 														</fieldset>
 													</form>
 												</div>
@@ -168,6 +203,12 @@ foreach ($num as $key => $value)
 						<?php
 						foreach ($value as $vkey => $vvalue)
 						{
+							$text = '';
+							$link = product_link($vvalue['slug']);
+							$text .= 'nama product : '.$vvalue['title'];
+      				$text .= "\n";
+      				$text .= $link;
+      				$text = urlencode($text);
 							?>
 							<div class="col-md-4 top_brand_left">
 							<div class="hover14 column">
@@ -179,7 +220,7 @@ foreach ($num as $key => $value)
 										<figure>
 											<div class="snipcart-item block" >
 												<div class="snipcart-thumb">
-													<a href="<?php echo product_link($vvalue['slug']); ?>"><img title=" " alt=" " height="150" src="<?php echo image_module('product', $vvalue['id'].'/'.$vvalue['image'])?>" /></a>
+													<a href="<?php echo $link; ?>"><img title=" " alt=" " height="150" src="<?php echo image_module('product', $vvalue['id'].'/'.$vvalue['image'])?>" /></a>
 													<p><?php echo $vvalue['title'] ?></p>
 													<!-- <div class="stars">
 														<i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -188,7 +229,17 @@ foreach ($num as $key => $value)
 														<i class="fa fa-star blue-star" aria-hidden="true"></i>
 														<i class="fa fa-star gray-star" aria-hidden="true"></i>
 													</div> -->
-													<h4><?php echo 'Rp. '.number_format($vvalue['price']-($vvalue['price']*@intval($vvalue['discount']))/100,'2',',','.') ?> <span><?php echo 'Rp. '.number_format($vvalue['price'], '2',',','.'); ?></span></h4>
+													<h4 class="">
+														<?php
+														echo 'Rp. '.number_format($vvalue['price']-($vvalue['price']*@intval($vvalue['discount']))/100,'2',',','.');
+														if(!empty($vvalue['discount']))
+														{
+															?>
+															<span><?php echo 'Rp. '.number_format($vvalue['price'],'2',',','.') ?></span>
+															<?php
+														}?>
+
+													</h4>
 												</div>
 												<div class="snipcart-details top_brand_home_details">
 													<form action="#" method="post">
@@ -203,6 +254,7 @@ foreach ($num as $key => $value)
 															<input type="hidden" name="return" value=" " />
 															<input type="hidden" name="cancel_return" value=" " />
 															<input type="submit" name="submit" value="Add to cart" class="button" />
+															<a href="https://wa.me/<?php echo @$profile['wa'];?>?text=<?php echo $text;?>" class="button btn btn-success" style="margin-top: 5%;">Order Via WA <i class="fa fa-whatsapp"></i></a>
 														</fieldset>
 													</form>
 												</div>

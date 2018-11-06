@@ -24,7 +24,7 @@ if(($mod['name'] == 'content' || $mod['name'] == 'product') && $mod['task'] != '
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?php echo @$site_value['title'] ?></title>
 <meta name="description" content="<?php echo $site_value['description'] ?>">
-<meta name="keywords" content="<?php echo $site_value['keyword'] ?>">
+<meta name="keywords" content="<?php echo $site_value['keyword'] ?> | esoftgreat">
 <meta name="developer" content="esoftgreat">
 <meta name="author" content="admin">
 <meta name="ROBOTS" content="all, index, follow">

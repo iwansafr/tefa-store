@@ -2,6 +2,13 @@
 
 $slug = $this->uri->segment(2);
 $data = $this->db->get_where('product', "slug = '{$slug}' AND publish = 1",1)->row_array();
+$text = '';
+$link = product_link($data['slug']);
+$text .= 'nama product : '.$data['title'];
+$text .= "\n";
+$text .= $link;
+$text = urlencode($text);
+$profile = $this->esg->get_config('profile');
 if(!empty($data))
 {
 	$cat_ids = $data['cat_ids'];
@@ -82,7 +89,17 @@ if(!empty($data))
 				<h2><?php echo $data['title'] ?></h2>
 					<div class="w3agile_description">
 						<div class="snipcart-thumb agileinfo_single_right_snipcart">
-							<h4 class="m-sing"><?php echo 'Rp. '.number_format($data['price']-($data['price']*@intval($data['discount']))/100,'2',',','.') ?> <span><?php echo 'Rp. '.number_format($data['price'],'2',',','.') ?></span></h4>
+							<h4 class="m-sing">
+								<?php
+								echo 'Rp. '.number_format($data['price']-($data['price']*@intval($data['discount']))/100,'2',',','.');
+								if(!empty($data['discount']))
+								{
+									?>
+									<span><?php echo 'Rp. '.number_format($data['price'],'2',',','.') ?></span>
+									<?php
+								}?>
+
+							</h4>
 						</div>
 						<div class="snipcart-thumb agileinfo_single_right_snipcart">
 							<div class="col-md-12" style="padding-left: 0;">
@@ -114,6 +131,7 @@ if(!empty($data))
 								<fieldset>
 									<input type="hidden" name="id" value="<?php echo $data['id'] ?>">
 									<input type="submit" value="Add to cart" class="button">
+									<a href="https://wa.me/<?php echo @$profile['wa'];?>?text=<?php echo $text;?>" class="button btn btn-success" style="margin-top: 5%;">Order Via WA <i class="fa fa-whatsapp"></i></a>
 								</fieldset>
 							</form>
 						</div>
