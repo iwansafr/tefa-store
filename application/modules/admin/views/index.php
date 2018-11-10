@@ -31,7 +31,7 @@ if(!empty($this->session->userdata[base_url().'_logged_in']))
 	unset($mod['string'][0]);
 	$mod['task'] = implode('_',$mod['string']);
 
-	$content                 = ($mod['name'] == 'index') ? 'admin/content' : $mod['name'].'/'.$mod['task'];
+	$content                 = ($mod['name'] == 'index') ? 'content' : $mod['name'].'/'.$mod['task'];
 	$data['content']         = $content;
 	$data['task']            = $mod['task'];
 	$data['module']          = $mod['name'];

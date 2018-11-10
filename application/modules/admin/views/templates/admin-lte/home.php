@@ -34,7 +34,13 @@
 					$data['alert']  = @$alert;
 					$data['module'] = @$module;
 					$data['task']   = @$task;
-					$this->load->view($content, $data);
+          $file_path = APPPATH.'modules'.DIRECTORY_SEPARATOR.'admin'.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.$content.'.php';
+          if(file_exists($file_path))
+          {
+            $this->load->view($content);
+          }else{
+            msg('it seems that your url is wrong', 'danger');
+          }
 					// pr(@($this->session));
 				?>
     	</div>

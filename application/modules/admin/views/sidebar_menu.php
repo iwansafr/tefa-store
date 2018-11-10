@@ -168,6 +168,18 @@ if(!empty($admin_templates))
 	    'icon'  => 'fa-file-text',
 	    'link'  => base_url('admin/expedision_list')
 	  );
+	  $menu[] = array(
+	  	'title' => 'Manual',
+	    'icon'  => 'fa-file-text',
+	    'link'  => base_url('admin/manual_list'),
+	    'list' => array(
+	    	array(
+	        'title' => 'add menu',
+	        'icon' => 'fa-list',
+	        'link' => base_url('admin/manual_list/?part=add_menu')
+	      ),
+	    )
+	  );
 	}
 	$data['menu'] = $menu;
 	$this->load->view('admin/templates/'.$admin_templates.'/sidebar_menu', $data);

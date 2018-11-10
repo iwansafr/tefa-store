@@ -396,5 +396,9 @@ class Admin extends CI_Controller
   {
     $this->load->view('admin/index');
   }
+  public function manual_list()
+  {
+    $this->load->view('admin/index');
+  }
 }
 
