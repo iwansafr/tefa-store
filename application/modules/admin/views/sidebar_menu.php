@@ -1,5 +1,5 @@
 <?php
- // defined('BASEPATH') OR exit('No direct script access allowed');
+ defined('BASEPATH') OR exit('No direct script access allowed');
 if(!empty($admin_templates))
 {
 	$data = array();
@@ -177,6 +177,11 @@ if(!empty($admin_templates))
 	        'title' => 'add menu',
 	        'icon' => 'fa-list',
 	        'link' => base_url('admin/manual_list/?part=add_menu')
+	      ),
+	      array(
+	        'title' => 'Header',
+	        'icon' => 'fa-list',
+	        'link' => base_url('admin/manual_list/?part=header')
 	      ),
 	    )
 	  );
