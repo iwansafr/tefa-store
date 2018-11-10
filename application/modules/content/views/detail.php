@@ -73,11 +73,19 @@ if(!empty($data))
 				?>
 				<img src="<?php echo image_module('content', $data['id'].'/'.$data['image']); ?>" style="object-fit: cover;width: 100%;">
 				<?php
-			}if(!empty($data['image_link']))
+			}else if(!empty($data['image_link']))
 			{
 				?>
 				<img src="<?php echo $data['image_link']; ?>" style="object-fit: cover;width: 100%;">
 				<?php
+			}else{
+				$logo = $this->esg->get_config('logo');
+				if(!empty($logo['image']))
+				{
+					?>
+					<img src="<?php echo image_module('config','logo/'.$logo['image']); ?>" style="object-fit: contain;width: 35%;">
+					<?php
+				}
 			}
 			if(!empty($data['images']))
 			{
