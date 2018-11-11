@@ -183,6 +183,11 @@ if(!empty($admin_templates))
 	        'icon' => 'fa-list',
 	        'link' => base_url('admin/manual_list/?part=header')
 	      ),
+	      array(
+	        'title' => 'Product Top Offer',
+	        'icon' => 'fa-list',
+	        'link' => base_url('admin/manual_list/?part=top_offer')
+	      ),
 	    )
 	  );
 	}
