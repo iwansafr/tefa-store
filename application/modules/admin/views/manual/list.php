@@ -6,6 +6,18 @@ if(!empty($part))
 	$file_path = APPPATH.'modules'.DIRECTORY_SEPARATOR.'admin'.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'manual'.DIRECTORY_SEPARATOR.$part.'.php';
 	if(file_exists($file_path))
 	{
+		?>
+		<style type="text/css">
+			img{
+				object-fit: contain;
+				width: 75%;
+				padding: 10px;
+			}
+			li{
+				padding: 10px;
+			}
+		</style>
+		<?php
 		echo '<button class="btn btn-default" onclick="print_manual()"><i class="fa fa-print"></i> Print</button>';
 		echo '<div id="manual_form">';
 		$this->load->view('manual/'.$part);

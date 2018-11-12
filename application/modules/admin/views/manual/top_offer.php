@@ -1,15 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-<style type="text/css">
-	img{
-		object-fit: contain;
-		width: 75%;
-		padding: 10px;
-	}
-	li{
-		padding: 10px;
-	}
-</style>
 <h2>cara mengatur product top offer</h2>
 <ol>
 	<li>Top Offer</li>

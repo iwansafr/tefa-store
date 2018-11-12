@@ -1,64 +1,107 @@
-<?php
-$type = @($_GET['type']);
-$slug = $this->uri->segment(1);
-$slug = str_replace('-', ' ', $slug);
-if($slug != 'content')
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
+$type           = @($_GET['type']);
+$slug           = $this->uri->segment(1);
+$product_config = $this->esg->get_config('product_config');
+$limit          = !empty($product_config['limit_list']) ? $product_config['limit_list'] : 12;
+$page           = @intval($_GET['page']);
+$psort          = @$_GET['sort'];
+$x_link         = !empty($psort) ? '?sort='.$psort : '';
+
+if($slug != 'product')
 {
 	$slug       = $this->uri->segment(2);
-	$slug       = str_replace('-', ' ', $slug);
-	$tag_id     = $this->data_model->get_one('content_tag', 'id', "WHERE title = '{$slug}'");
-	$tag_title  = $this->data_model->get_one('content_tag', 'title', "WHERE title = '{$slug}'");
+	$tag_id     = $this->data_model->get_one('product_tag', 'id', "WHERE title = '{$slug}'");
+	$tag_title  = $this->data_model->get_one('product_tag', 'title', "WHERE title = '{$slug}'");
 	$title      = @$slug;
-	$page       = @intval($_GET['page']);
-	$limit      = 6;
-	$data       = $this->db->get_where('content', "tag_ids LIKE  '%,{$tag_id},%' AND publish = 1",$limit)->result_array();
-	$total_rows = $this->db->get_where('content',"tag_ids LIKE  '%,{$tag_id},%' AND publish = 1")->num_rows();
+
+	if(!empty($psort))
+	{
+		switch ($psort)
+		{
+			case 'ph2l':
+				$this->db->order_by('price','DESC');
+				break;
+			case 'pl2h':
+				$this->db->order_by('price','ASC');
+				break;
+			case 'newest':
+				$this->db->order_by('id','DESC');
+				break;
+			default:
+				$this->db->order_by('id','DESC');
+				break;
+		}
+	}
+	$data       = $this->db->get_where('product', "tag_ids LIKE  '%,{$tag_id},%' AND publish = 1",$limit,$page)->result_array();
+	$total_rows = $this->db->get_where('product',"tag_ids LIKE  '%,{$tag_id},%' AND publish = 1")->num_rows();
 }else{
 	$id           = @intval($this->uri->segment(3));
 	$title        = @($this->uri->segment(4));
-	$page         = @intval($_GET['page']);
-	$limit        = 6;
 }
-if(!empty($id) && is_numeric($id))
+if(!empty($id))
 {
-	$url_get = base_url('content/tag/'.$id.'/'.url_title($title).'.html');
-	$header_title = 'tag of '.$title;
-	$table = 'content';
+	$url_get = base_url('product/tag/'.$id.'/'.$title.'.html');
+	$header_title = 'Tag of '.$title;
+	$table = 'product';
 }else if(!empty($tag_title)){
-	$url_get = base_url('tag/'.url_title($slug).'.html');
-	$header_title = 'tag of '.$tag_title;
-	$table = 'content';
+	// $url_get = base_url('category/'.$slug.'.html?type=grid');
+	$url_get = base_url('product-tag/'.$slug.'.html'.$x_link);
+	$header_title = 'Tag of '.$tag_title;
+	$table = 'product';
+}
+
+if(!empty($table))
+{
+	if(!empty($id))
+	{
+		$this->db->like('tag_ids', $id, 'both');
+	}
+	if(empty($data) && empty($tag_title))
+	{
+		$data = $this->db->get_where($table,'publish = 1',$limit,$page)->result_array();
+	}
+	if(!empty($id))
+	{
+		$this->db->like('tag_ids', $id, 'both');
+	}
+	if(empty($total_rows) && empty($tag_title))
+	{
+		$total_rows = $this->db->get_where($table,'publish = 1')->num_rows();
+	}
+
+	$config = pagination($total_rows,$limit,$url_get);
+	$this->pagination->initialize($config);
+	$page_nation = $this->pagination->create_links();
+
+	$view_data                    = array();
+	$view_data['header_title']    = $header_title;
+	$view_data['data']            = $data;
+	$view_data['page_nation']     = $page_nation;
+	$view_data['config_template'] = $config_template;
+	if($type=='grid')
+	{
+		$header_title = $tag_title;
+		include 'grid.html.php';
+	}else{
+		if(file_exists(APPPATH.'modules/home/views/'.$active_template.'/'.'product/list.html.php'))
+		{
+			$this->load->view('home/'.$active_template.'/'.'product/list.html.php', $view_data);
+		}else{
+			include 'list.html.php';
+		}
+	}
 }else{
-	$url_get = base_url('tag/'.url_title($slug).'.html');
-	$header_title = 'All tag';
-	$table = 'content_tag';
-}
-if(!empty($id))
-{
-	$this->db->like('tag_ids', $id, 'both');
-}
-if(empty($data) && empty($tag_title))
-{
-	$data = $this->db->get_where($table,'id > 0',$limit,$page)->result_array();
-}
-
-if(!empty($id))
-{
-	$this->db->like('tag_ids', $id, 'both');
-}
-if(empty($total_rows) && empty($tag_title))
-{
-	$total_rows = $this->db->get_where($table,'id > 0')->num_rows();
-}
-
-$config = pagination($total_rows,$limit,$url_get);
-$this->pagination->initialize($config);
-$page_nation = $this->pagination->create_links();
-
-if($type=='grid')
-{
-	$header_title = $tag_title;
-	include 'grid.html.php';
-}else{
-	include 'list.html.php';
+	?>
+	<div class="breadcrumbs">
+		<div class="container">
+			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+				<li><a href="<?php echo base_url() ?>"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+				<li class="active">404</li>
+			</ol>
+		</div>
+	</div>
+	<?php
+	echo '<div class="container">';
+	echo msg('content not found', 'warning');
+	echo '</div>';
 }

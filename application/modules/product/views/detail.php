@@ -123,6 +123,21 @@ if(!empty($data))
 						<hr>
 						<h4>Description :</h4>
 						<p><?php echo $data['description'] ?></p>
+						<p>
+							tags :
+							<?php
+							if(!empty($tags))
+							{
+								foreach ($tags as $t_key => $t_value)
+								{
+									?>
+									<a href="<?php echo product_tag_link($t_value['title']) ?>">
+										<button class="btn btn-info btn-xs"><?php echo $t_value['title'] ?></button>
+									</a>
+									<?php
+								}
+							}?>
+						</p>
 					</div>
 					<div class="snipcart-item block">
 						<div class="snipcart-details agileinfo_single_right_details">

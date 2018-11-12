@@ -179,6 +179,11 @@ if(!empty($admin_templates))
 	        'link' => base_url('admin/manual_list/?part=add_menu')
 	      ),
 	      array(
+	        'title' => 'add product',
+	        'icon' => 'fa-list',
+	        'link' => base_url('admin/manual_list/?part=add_product')
+	      ),
+	      array(
 	        'title' => 'Header',
 	        'icon' => 'fa-list',
 	        'link' => base_url('admin/manual_list/?part=header')
