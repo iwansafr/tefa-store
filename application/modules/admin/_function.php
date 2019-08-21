@@ -1,5 +1,4 @@
 <?php
-function admin_function()
-{
+function admin_function(){
 	return 'testing';
 }
